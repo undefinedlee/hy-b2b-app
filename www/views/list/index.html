@@ -1,0 +1,21 @@
+<ion-view title="产品列表">
+    <ion-nav-buttons side="right">
+        <button class="button">
+            <i class="icon i-filter"></i>
+        </button>
+    </ion-nav-buttons>
+    <ion-content padding="false">
+        <ion-list ng-repeat="i in [1,2,3,4,5,6,7,8,9,10]">
+            <ion-item class="product-item">
+                <h2 class="title">法瑞意德13天11晚（AZ）·金色山口+少女峰</h2>
+                <a class="tour" href="#/main/detail">
+                    <span>12/{{i}}</span>
+                </a>
+                <a class="tour" href="#/main/detail">
+                    <span>12/{{i}}</span>
+                </a>
+                <a class="more">...</a>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

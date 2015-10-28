@@ -1,0 +1,125 @@
+/* Empty. Add your own CSS if you like */
+@font-face {font-family: "iconfont";
+  src: url('iconfont/iconfont.eot'); /* IE9*/
+  src: url('iconfont/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('iconfont/iconfont.woff') format('woff'), /* chrome、firefox */
+  url('iconfont/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+  url('iconfont/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.icon {
+  font-family:"iconfont" !important;
+  font-size:16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+}
+.i-user:before { content: "\e600"; }
+.i-list:before { content: "\e601"; }
+.icon-liebiaoxianshi:before { content: "\e602"; }
+.i-home:before { content: "\e603"; }
+.icon-xinwenliebiao:before { content: "\e604"; }
+.icon-toright:before { content: "\e605"; }
+.i-back:before { content: "\e606"; }
+.icon-home1:before { content: "\e607"; }
+.i-filter:before { content: "\e608"; }
+.icon-home2:before { content: "\e609"; }
+.icon-list:before { content: "\e60a"; }
+.icon-qiangxin:before { content: "\e60b"; }
+.icon-icordercheck:before { content: "\e60c"; }
+.icon-home3:before { content: "\e60d"; }
+.i-order:before { content: "\e60e"; }
+.icon-liebiaomoshixe615:before { content: "\e60f"; }
+
+.ng-hide{
+     transition: 0.3s linear all;
+     opacity: 0;
+}
+
+html, body, .pane, .view{
+	background-color: #f5f2ec;
+    font-family: "微软雅黑";
+}
+.bar-primary{
+	background-color: rgba(66, 38, 89, .85);
+}
+.bar-primary .title{
+	color: #fff;
+}
+.bar-primary .button {
+  border-color: transparent;
+  background-color: transparent;
+  color: #fff;
+ }
+ .bar-primary .back-text{
+     font-size: 12px;
+ }
+  .bar-primary .button:hover {
+    color: #fff;
+    text-decoration: none; }
+  .bar-primary .button.active, .bar-primary .button.activated {
+    border-color: transparent;
+    background-color: transparent;
+    box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1); }
+  .bar-primary .button.button-clear {
+    border-color: transparent;
+    background: none;
+    box-shadow: none;
+    color: #fff;
+    font-size: 17px; }
+  .bar-primary .button.button-icon {
+    border-color: transparent;
+    background: none; }
+.has-header{
+	top: 0;
+	padding-top: 44px;
+}
+.has-tabs{
+    bottom: 0;
+    padding-bottom: 49px;
+}
+.tabs-primary > .tabs, .tabs.tabs-primary{
+    /*background-color: #e4dfd6;*/
+    background-color: rgba(228, 223, 214, 0.85);
+    border-top: 1px solid #d9d2c5 !important;
+    color: #5d446f;
+}
+.tabs-primary .tab-item{
+    line-height: 1;
+    font-size: 12px;
+}
+.tab-item{
+    opacity: 1;
+}
+.tab-item .icon{
+    line-height: 1;
+}
+.item{
+	margin: 10px;
+	border: none;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, .15);
+}
+.product-item{
+    padding: 0;
+}
+.product-item .title{
+    border-bottom: 1px solid #e4ded2;
+    padding: 0 10px;
+    line-height: 40px;
+}
+.product-item .tour{
+    display: block;
+    margin: 0 10px;
+    border-bottom: 1px solid #e4ded2;
+    line-height: 40px;
+    color: #666;
+}
+.product-item .more{
+    display: block;
+    font-size: 24px;
+    text-align: center;
+    height: 30px;
+    line-height: 14px;
+    color: #C0B49D;
+}
