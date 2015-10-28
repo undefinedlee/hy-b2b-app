@@ -32,17 +32,17 @@
 .i-order:before { content: "\e60e"; }
 .icon-liebiaomoshixe615:before { content: "\e60f"; }
 
-.ng-hide{
+/*.ng-hide{
      transition: 0.3s linear all;
      opacity: 0;
-}
+}*/
 
 html, body, .pane, .view{
 	background-color: #f5f2ec;
-    font-family: "微软雅黑";
 }
 .bar-primary{
 	background-color: rgba(66, 38, 89, .85);
+  -webkit-backdrop-filter: blur(4px);
 }
 .bar-primary .title{
 	color: #fff;
@@ -53,7 +53,7 @@ html, body, .pane, .view{
   color: #fff;
  }
  .bar-primary .back-text{
-     font-size: 12px;
+     font-size: 14px;
  }
   .bar-primary .button:hover {
     color: #fff;
@@ -81,9 +81,10 @@ html, body, .pane, .view{
 }
 .tabs-primary > .tabs, .tabs.tabs-primary{
     /*background-color: #e4dfd6;*/
-    background-color: rgba(228, 223, 214, 0.85);
-    border-top: 1px solid #d9d2c5 !important;
+    background-color: rgba(228, 223, 214, 0.95);
+    background-image: linear-gradient(0deg, #B5A891, #B5A891 50%, transparent 50%);
     color: #5d446f;
+    -webkit-backdrop-filter: blur(4px);
 }
 .tabs-primary .tab-item{
     line-height: 1;
@@ -95,10 +96,17 @@ html, body, .pane, .view{
 .tab-item .icon{
     line-height: 1;
 }
+.tab-item-active{
+  color: #EC8600;
+}
+.tab-item.activated{
+  transform: translate3d(1px, 1px, 0);
+}
 .item{
 	margin: 10px;
 	border: none;
-	box-shadow: 0 1px 3px rgba(0, 0, 0, .15);
+	box-shadow: 0 1px 3px rgba(0, 0, 0, .1);
+  border-radius: 3px;
 }
 .product-item{
     padding: 0;
@@ -107,19 +115,66 @@ html, body, .pane, .view{
     border-bottom: 1px solid #e4ded2;
     padding: 0 10px;
     line-height: 40px;
+    color: #333;
+    margin-bottom: 0;
 }
 .product-item .tour{
     display: block;
-    margin: 0 10px;
+    margin-left: 15px;
+    padding-right: 60px;
     border-bottom: 1px solid #e4ded2;
+    height: 40px;
     line-height: 40px;
+    font-size: 14px;
     color: #666;
+    text-decoration: none;
+    clear: both;
+    overflow: hidden;
+}
+.product-item .tour .icon{
+  float: right;
+  margin-right: -50px;
+  transform: rotate(180deg);
+  font-size: 20px;
+  color: #e4ded2;
+}
+.product-item .tour.activated{
+  border-color: #f90;
+  transform: translate3d(1px, 1px, 0);
+}
+.product-item .date,
+.product-item .storage,
+.product-item .price{
+  float: left;
+  width: 33%;
+}
+.product-item .storage{
+  text-align: center;
+  width: 34%;
+  color: #999;
+}
+.product-item .storage strong{
+  color: #0a0;
+}
+.product-item .price{
+  text-align: right;
+  font-size: 8px;
+  color: #999;
+}
+.product-item .price strong{
+  font-size: 14px;
+  color: #f90;
 }
 .product-item .more{
     display: block;
-    font-size: 24px;
+    font-size: 18px;
     text-align: center;
     height: 30px;
-    line-height: 14px;
+    line-height: 1;
     color: #C0B49D;
+    clear: both;
+}
+.product-item .more.activated{
+  color: #f90;
+  font-size: 20px;
 }

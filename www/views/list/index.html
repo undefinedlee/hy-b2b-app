@@ -5,14 +5,23 @@
         </button>
     </ion-nav-buttons>
     <ion-content padding="false">
-        <ion-list ng-repeat="i in [1,2,3,4,5,6,7,8,9,10]">
-            <ion-item class="product-item">
+        <ion-refresher
+            pulling-text="下拉刷新...">
+        </ion-refresher>
+        <ion-list>
+            <ion-item class="product-item" ng-repeat="i in [1,2,3,4,5,6,7,8,9,10]">
                 <h2 class="title">法瑞意德13天11晚（AZ）·金色山口+少女峰</h2>
                 <a class="tour" href="#/main/detail">
-                    <span>12/{{i}}</span>
+                    <span class="date">12/{{i}}</span>
+                    <span class="storage">余位：<strong>&gt;9</strong></span>
+                    <span class="price">&yen;<strong>12999</strong></span>
+                    <i class="icon i-back"></i>
                 </a>
                 <a class="tour" href="#/main/detail">
-                    <span>12/{{i}}</span>
+                    <span class="date">12/{{i}}</span>
+                    <span class="storage">余位：<strong>&gt;9</strong></span>
+                    <span class="price">&yen;<strong>12999</strong></span>
+                    <i class="icon i-back"></i>
                 </a>
                 <a class="more">...</a>
             </ion-item>
