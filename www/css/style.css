@@ -20,7 +20,7 @@
 .icon-liebiaoxianshi:before { content: "\e602"; }
 .i-home:before { content: "\e603"; }
 .icon-xinwenliebiao:before { content: "\e604"; }
-.icon-toright:before { content: "\e605"; }
+.i-toright:before { content: "\e605"; }
 .i-back:before { content: "\e606"; }
 .icon-home1:before { content: "\e607"; }
 .i-filter:before { content: "\e608"; }
@@ -39,6 +39,10 @@
 
 html, body, .pane, .view{
 	background-color: #f5f2ec;
+    font-family: "微软雅黑";
+}
+.h1,h2,h3,h4,h5,h6{
+    font-family: "微软雅黑";
 }
 .bar-primary{
 	background-color: rgba(66, 38, 89, .85);
@@ -85,6 +89,7 @@ html, body, .pane, .view{
     background-image: linear-gradient(0deg, #B5A891, #B5A891 50%, transparent 50%);
     color: #5d446f;
     -webkit-backdrop-filter: blur(4px);
+    padding-top: 0; 
 }
 .tabs-primary .tab-item{
     line-height: 1;
@@ -92,21 +97,34 @@ html, body, .pane, .view{
 }
 .tab-item{
     opacity: 1;
+    padding-top: 2px;
 }
 .tab-item .icon{
+    font-size: 28px;
+    height: 28px;
     line-height: 1;
+    -webkit-text-stroke-width: 0;
+}
+.tab-item .tab-title{
+    display: block;
+    margin-top: 1px;
 }
 .tab-item-active{
   color: #EC8600;
+  transition: 0.1s linear color;
 }
 .tab-item.activated{
-  transform: translate3d(1px, 1px, 0);
+    background-color: #DAD3C9;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, .1) inset;
+}
+.tab-item.activated *{
+    transform: translate3d(1px, 1px, 0);
 }
 .item{
 	margin: 10px;
 	border: none;
 	box-shadow: 0 1px 3px rgba(0, 0, 0, .1);
-  border-radius: 3px;
+    border-radius: 3px;
 }
 .product-item{
     padding: 0;
@@ -136,7 +154,7 @@ html, body, .pane, .view{
   margin-right: -50px;
   transform: rotate(180deg);
   font-size: 20px;
-  color: #e4ded2;
+  color: #DBD4C4;
 }
 .product-item .tour.activated{
   border-color: #f90;
@@ -177,4 +195,113 @@ html, body, .pane, .view{
 .product-item .more.activated{
   color: #f90;
   font-size: 20px;
+}
+.banner{
+    min-height: 80px;
+}
+.banner .slider-slide img{
+    display: block;
+    width: 100%;
+}
+.banner .slider-pager{
+    bottom: initial;
+    bottom: 70px;
+}
+.banner .slider-pager .slider-pager-page{
+    color: #fff;
+}
+.banner .slider-pager .icon{
+    font-size: 12px;
+}
+.banner-mask{
+    position: relative;
+    width: 100%;
+    height: 60px;
+    margin-top: -60px;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, rgba(245, 242, 236,0)), color-stop(1, rgba(245, 242, 236,1)));
+}
+.search-bar{
+    position: relative;
+    margin: -60px 15px 0;
+    padding: 10px 25px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 6px 6px 5px 5px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.15);
+    border-bottom: 5px solid #5d446f;
+}
+.search-bar .search-btn{
+    display: block;
+    margin: 20px 0 -32px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 16px;
+    background-color: #5d446f;
+    color: #fff;
+    border-radius: 3px;
+}
+.search-bar .search-btn.activated{
+    background-color: #553E66;
+    transform: translate3d(1px, 1px, 0);
+}
+.search-bar p{
+    position: relative;
+    height: 40px;
+    line-height: 40px;
+    padding-left: 60px;
+    margin: 10px 0;
+}
+.search-bar .name{
+    position: absolute;
+    left: 0;
+    font-size: 12px;
+    color: #666;
+}
+.search-bar .input{
+    display: block;
+    height: 40px;
+    line-height: 40px;
+    box-shadow: 0 1px 0 #ccc;
+    font-size: 18px;
+}
+.search-bar .input.activated{
+    transform: translate3d(1px, 1px, 0);
+    box-shadow: 0 1px 0 #f90;
+}
+.search-bar .half{
+    float: left;
+    width: 50%;
+    box-sizing: border-box;
+}
+.search-bar .half .input{
+    font-size: 14px;
+}
+.search-bar .half:nth-child(even){
+    padding-right: 25px;
+}
+.search-bar .half:nth-child(odd){
+    padding-left: 25px;
+}
+.search-bar .split{
+    position: absolute;
+    width: 50px;
+    left: 50%;
+    margin-left: 5px;
+    text-align: center;
+    font-size: 24px;
+    color: #ccc;
+}
+.tool-panel{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    transform: translate3d(0, 100%, 0);
+    transition: transform 200ms ease;
+    background-color: #fff;
+    z-index: 10;
+}
+.tool-panel-show{
+    transform: translate3d(0, 0, 0);
 }

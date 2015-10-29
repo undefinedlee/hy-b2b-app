@@ -1,5 +1,37 @@
 <ion-view title="首页" hide-nav-bar="true">
-	<ion-content padding="true">
-	<p>首页<p>
-	</ion-content>
+	<ion-pane padding="false">
+		<ion-slide-box class="banner">
+			<ion-slide>
+				<img src="http://www.kaolawan.com/uploads/131201/1-131201103405V9.jpg" />
+			</ion-slide>
+			<ion-slide>
+				<img src="http://img3.3lian.com/2013/c4/92/d/56.jpg" />
+			</ion-slide>
+			<ion-slide on-slide-changed="slideHasChanged(index)">
+				<img src="http://img3.3lian.com/2013/c4/92/d/62.jpg" />
+			</ion-slide>
+		</ion-slide-box>
+		<div class="banner-mask"></div>
+		<div class="search-bar">
+			<p>
+				<span class="name">出发城市</span>
+				<a class="input">北京、上海</a>
+			</p>
+			<p>
+				<span class="name">目&nbsp;的&nbsp;&nbsp;地</span>
+				<a class="input">欧洲</a>
+			</p>
+			<p>
+				<span class="name">出团日期</span>
+				<span class="half">
+					<a class="input" calendar>2015-11-20</a>
+				</span>
+				<span class="half">
+					<a class="input" calendar>2015-12-30</a>
+				</span>
+				<span class="split icon i-toright"></span>
+			</p>
+			<a class="search-btn">搜索产品</a>
+		</div>
+	</ion-pane>
 </ion-view>
