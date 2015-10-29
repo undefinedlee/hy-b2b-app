@@ -4,4 +4,20 @@
 	</div>
 	<h1 class="title">选择日期</h1>
 </div>
-<ion-content></ion-content>
+<div class="bar bar-subheader weeks">
+	<span class="weekend">日</span>
+	<span>一</span>
+	<span>二</span>
+	<span>三</span>
+	<span>四</span>
+	<span>五</span>
+	<span class="weekend">六</span>
+</div>
+<ion-content class="calendar-panel">
+	<div class="days" ng-repeat="month in months">
+		<span class="month">{{month.num}}</span>
+		<p class="week" ng-repeat="week in month.weeks">
+			<a class="day" ng-repeat="day in week.days" ng-click="select(month.year, month.num, day.num)">{{day.num}}</a>
+		</p>
+	</div>
+</ion-content>

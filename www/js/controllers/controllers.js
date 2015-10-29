@@ -1,6 +1,22 @@
 angular.module('app.controllers', [])
-.controller('HomeController',function($scope) {
-	console.log("home");
+.controller('HomeController',function($scope, toolPanel) {
+	$scope.close = function(){
+		toolPanel.hide();
+	};
+
+	$scope.selectStart = function(){
+		toolPanel.show({
+			templateUrl: "views/home/start.html",
+			scope: $scope
+		});
+	};
+
+	$scope.selectDest = function(){
+		toolPanel.show({
+			templateUrl: "views/home/dest.html",
+			scope: $scope
+		});
+	};
 })
 .controller('ListController',function($scope) {
 	console.log("list");

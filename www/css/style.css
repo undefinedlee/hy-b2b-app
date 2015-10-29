@@ -86,7 +86,7 @@ html, body, .pane, .view{
 .tabs-primary > .tabs, .tabs.tabs-primary{
     /*background-color: #e4dfd6;*/
     background-color: rgba(228, 223, 214, 0.95);
-    background-image: linear-gradient(0deg, #B5A891, #B5A891 50%, transparent 50%);
+    background-image: linear-gradient(180deg, #B5A891, #B5A891 50%, transparent 50%);
     color: #5d446f;
     -webkit-backdrop-filter: blur(4px);
     padding-top: 0; 
@@ -130,7 +130,10 @@ html, body, .pane, .view{
     padding: 0;
 }
 .product-item .title{
-    border-bottom: 1px solid #e4ded2;
+    background-image: linear-gradient(0deg, #DBD4C4, #DBD4C4 50%, transparent 50%);
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: 100% 1px;
     padding: 0 10px;
     line-height: 40px;
     color: #333;
@@ -140,7 +143,10 @@ html, body, .pane, .view{
     display: block;
     margin-left: 15px;
     padding-right: 60px;
-    border-bottom: 1px solid #e4ded2;
+    background-image: linear-gradient(0deg, #DBD4C4, #DBD4C4 50%, transparent 50%);
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: 100% 1px;
     height: 40px;
     line-height: 40px;
     font-size: 14px;
@@ -157,8 +163,11 @@ html, body, .pane, .view{
   color: #DBD4C4;
 }
 .product-item .tour.activated{
-  border-color: #f90;
+  background-image: linear-gradient(0deg, #f90, #f90 50%, transparent 50%);
   transform: translate3d(1px, 1px, 0);
+}
+.product-item .tour.activated .icon{
+  color: #f90;
 }
 .product-item .date,
 .product-item .storage,
@@ -223,7 +232,7 @@ html, body, .pane, .view{
 .search-bar{
     position: relative;
     margin: -60px 15px 0;
-    padding: 10px 25px;
+    padding: 10px 20px;
     background-color: rgba(255, 255, 255, 0.8);
     border-radius: 6px 6px 5px 5px;
     box-shadow: 0 1px 3px rgba(0,0,0,.15);
@@ -246,47 +255,58 @@ html, body, .pane, .view{
 }
 .search-bar p{
     position: relative;
-    height: 40px;
-    line-height: 40px;
-    padding-left: 60px;
+    height: 45px;
+    padding-top: 10px;
     margin: 10px 0;
 }
 .search-bar .name{
     position: absolute;
     left: 0;
+    top: 0;
     font-size: 12px;
+    line-height: 1;
     color: #666;
 }
 .search-bar .input{
     display: block;
-    height: 40px;
+    height: 35px;
     line-height: 40px;
-    box-shadow: 0 1px 0 #ccc;
     font-size: 18px;
+    background-image: linear-gradient(0deg, #bbb, #bbb 50%, transparent 50%);
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: 100% 1px;
+    overflow: hidden;
 }
 .search-bar .input.activated{
     transform: translate3d(1px, 1px, 0);
-    box-shadow: 0 1px 0 #f90;
+    background-image: linear-gradient(0deg, #f90, #f90 50%, transparent 50%);
 }
 .search-bar .half{
     float: left;
     width: 50%;
     box-sizing: border-box;
 }
-.search-bar .half .input{
-    font-size: 14px;
+.search-bar .half .input em{
+  font-size: 12px;
+  color: #999;
+  white-space: nowrap;
 }
 .search-bar .half:nth-child(even){
-    padding-right: 25px;
+    padding-right: 10px;
 }
 .search-bar .half:nth-child(odd){
-    padding-left: 25px;
+    padding-left: 10px;
+}
+.search-bar .half:nth-child(odd) .input{
+  text-align: right;
 }
 .search-bar .split{
     position: absolute;
-    width: 50px;
+    width: 20px;
     left: 50%;
-    margin-left: 5px;
+    top: 18px;
+    margin-left: -10px;
     text-align: center;
     font-size: 24px;
     color: #ccc;
@@ -297,11 +317,71 @@ html, body, .pane, .view{
     right: 0;
     top: 0;
     bottom: 0;
-    transform: translate3d(0, 100%, 0);
+    transform: translate3d(100%, 0, 0);
     transition: transform 200ms ease;
     background-color: #fff;
     z-index: 10;
 }
 .tool-panel-show{
     transform: translate3d(0, 0, 0);
+}
+.calendar-panel{
+  padding: 68px 0 0;
+}
+.weeks{
+  display: flex;
+  padding: 0;
+  background-color: rgba(238, 238, 238, 0.85);
+  height: 24px;
+  line-height: 24px;
+  column-count: 5;
+}
+.weeks span{
+  flex: 1;
+  text-align: center;
+  color: #666;
+}
+.weeks .weekend{
+  color: #f90;
+}
+.days{
+  position: relative;
+  margin-bottom: 20px;
+  box-shadow: -0.5px -0.5px 0 #bbb;
+}
+.days .month{
+  position: absolute;
+  font-size: 200px;
+  line-height: 1;
+  height: 200px;
+  width: 100%;
+  text-align: center;
+  left: 0;
+  top: 50%;
+  margin-top: -100px;
+  color: #eee;
+  font-family: serif;
+}
+.days .week{
+  position: relative;
+  display: flex;
+  margin: 0;
+}
+.days .day,
+.days .empty,
+.days .disabled{
+  flex: 1;
+  box-sizing: border-box;
+  height: 40px;
+  font-size: 16px;
+  line-height: 40px;
+  box-shadow: 0.5px 0.5px 0 #bbb;
+  text-align: center;
+}
+.days .day{
+  color: #333;
+  font-weight: bold;
+}
+.days .disabled{
+  color: #999;
 }
