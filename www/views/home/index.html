@@ -23,13 +23,13 @@
 				<span class="half">
 					<calendar class="input" placeholder="选择日期" ng-model="StartDateBegin">
 						{{month}}月{{day}}日
-						<em>{{week}}</em>
+						<em>周{{week | weekName}}</em>
 					</calendar>
 				</span>
 				<span class="half">
 					<calendar class="input" placeholder="选择日期" ng-model="StartDateEnd">
 						{{month}}月{{day}}日
-						<em>{{week}}</em>
+						<em>周{{week | weekName}}</em>
 					</calendar>
 				</span>
 				<span class="split"></span>

@@ -410,3 +410,6 @@ html, body, .pane, .view{
     background-color: #f90;
     color: #fff;
 }
+.calendar-placeholder{
+  color: #bbb;
+}

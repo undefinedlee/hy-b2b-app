@@ -23,6 +23,7 @@
 		<p class="week" ng-repeat="week in month.weeks">
 			<span class="day" ng-repeat="day in week.days">
 				<a class="able" ng-click="select(month.year, month.num, day.num)" ng-if="day.able">{{day.num}}</a>
+				<a class="able current" ng-click="select(month.year, month.num, day.num)" ng-if="day.current">{{day.num}}</a>
 				<span class="disable" ng-if="day.disable">{{day.num}}</span>
 			</span>
 		</p>

@@ -15,6 +15,7 @@ angular.module('app.directives', [])
 			$scope.year = year;
 			$scope.month = month;
 			$scope.day = day;
+			$scope.week = new Date(year, month - 1, day).getDay();
 		};
 		
 		toolPanel.fill();
@@ -26,10 +27,13 @@ angular.module('app.directives', [])
 				var month = date.getMonth();
 				var months = [];
 				var startDay = year * 10000 + month * 100 + date.getDate();
+				var now = $scope.year * 10000 + ($scope.month - 1) * 100 + +$scope.day;
 				for(var i = 0; i < 12; i ++){
 					months[i] = (function(year, month){
 						var date = new Date(year, month, 1);
-						var dayOffset = date.getFullYear() * 10000 + date.getMonth() * 100 - startDay;
+						var currentMonth = date.getFullYear() * 10000 + date.getMonth() * 100;
+						var dayOffset = currentMonth - startDay;
+						var nowOffset = now - currentMonth;
 						var month = {
 							year: date.getFullYear(),
 							num: date.getMonth() + 1,
@@ -41,7 +45,12 @@ angular.module('app.directives', [])
 									});
 								}
 								for(i = 1; i <= count; i ++){
-									if(dayOffset + i < 0){
+									if(i == nowOffset){
+										days.push({
+											current: true,
+											num: i
+										});
+									}else if(dayOffset + i < 0){
 										days.push({
 											disable: true,
 											num: i
@@ -111,7 +120,7 @@ angular.module('app.directives', [])
     // // 执行动作
   // });
 })
-.directive("calendar", function($rootScope, $compile){
+.directive("calendar", function($rootScope, $compile, $document){
 	return {
 		restrict: "E",
 		//template: "<a></a>",
@@ -121,38 +130,59 @@ angular.module('app.directives', [])
 		scope: {
 			year: '=',
             month: '=',
-			day: '='
+			day: '=',
+			week: '='
         },
 		compile: function compile(element, attrs, linkFn) {
-			//var value = attrs["value"];
-			//var template = element.html();
-			//var placeholder = atrrs["placeholder"];
-			//console.log(value);
-			//console.log(template);
-			//console.log(placeholder);
-			
-			var template = $compile(element.contents());
+			var placeholder = attrs["placeholder"];
+			var templateNodes = element.contents();
+			var template = $compile(templateNodes);
+			var tempContainer = angular.element('<div></div>');
 			return function(scope, element, attrs, controller){
-				template(scope);
-				controller.$render = function(value) {
+				//template(scope);
+				var lastHasValue = true;
+				controller.$render = function() {
+					var value = this.$viewValue;
 					if(value){
 						value = value.split("-");
 						scope.year = value[0];
 						scope.month = value[1];
 						scope.day = value[2];
+						scope.week = new Date(scope.year, scope.month - 1, scope.day).getDay();
 					}else{
 						scope.year = "";
 						scope.month = "";
 						scope.day = "";
+						scope.week = "";
 					}
 				};
 				//scope.$apply(function() {
-				// scope.$watch(function() {
-				// 	controller.$setViewValue([scope.year, scope.month, scope.day].join("-"));
-				// });
-				controller.$setViewValue([scope.year, scope.month, scope.day].join("-"));
+				scope.$watch(function() {
+					if(scope.year && scope.month && scope.day){
+						if(!lastHasValue){
+							lastHasValue = true;
+							element.empty().removeClass("calendar-placeholder");
+							element.append(templateNodes);
+						}
+						controller.$setViewValue([scope.year, scope.month, scope.day].join("-"));
+					}else{
+						if(lastHasValue){
+							lastHasValue = false;
+							tempContainer.append(templateNodes);
+							element.text(placeholder).addClass("calendar-placeholder");
+						}
+						controller.$setViewValue("");
+					}
+				});
+				//controller.$setViewValue([scope.year, scope.month, scope.day].join("-"));
+				template(scope);
 			};
 		}
+	};
+})
+.filter("weekName", function(){
+	return function(week){
+		return "日一二三四五六"[week] || "";
 	};
 })
 .factory("toolPanel", function(){
