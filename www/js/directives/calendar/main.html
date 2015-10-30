@@ -1,3 +1,4 @@
+<div class="model">
 <div class="bar bar-header bar-primary">
 	<div class="buttons">
 		<button class="button icon i-back" ng-click="close()"></button>
@@ -15,9 +16,16 @@
 </div>
 <ion-content class="calendar-panel">
 	<div class="days" ng-repeat="month in months">
-		<span class="month">{{month.num}}</span>
+		<span class="month">
+			{{month.num}}
+			<span class="year">{{month.year}}</span>
+		</span>
 		<p class="week" ng-repeat="week in month.weeks">
-			<a class="day" ng-repeat="day in week.days" ng-click="select(month.year, month.num, day.num)">{{day.num}}</a>
+			<span class="day" ng-repeat="day in week.days">
+				<a class="able" ng-click="select(month.year, month.num, day.num)" ng-if="day.able">{{day.num}}</a>
+				<span class="disable" ng-if="day.disable">{{day.num}}</span>
+			</span>
 		</p>
 	</div>
 </ion-content>
+</div>

@@ -326,7 +326,10 @@ html, body, .pane, .view{
     transform: translate3d(0, 0, 0);
 }
 .calendar-panel{
-  padding: 68px 0 0;
+  /*padding: 68px 0 0;*/
+  top: 68px;
+  padding: 0;
+  background-color: #f5f2ec;
 }
 .weeks{
   display: flex;
@@ -334,7 +337,8 @@ html, body, .pane, .view{
   background-color: rgba(238, 238, 238, 0.85);
   height: 24px;
   line-height: 24px;
-  column-count: 5;
+  /*background-image: linear-gradient(0deg, #B5A891, #B5A891 50%, transparent 50%);*/
+  box-shadow: 0 0.5px 0 #999;
 }
 .weeks span{
   flex: 1;
@@ -347,11 +351,12 @@ html, body, .pane, .view{
 .days{
   position: relative;
   margin-bottom: 20px;
-  box-shadow: -0.5px -0.5px 0 #bbb;
+  box-shadow: -0.5px -0.5px 0 #999;
+  background-color: #fff;
 }
 .days .month{
   position: absolute;
-  font-size: 200px;
+  font-size: 150px;
   line-height: 1;
   height: 200px;
   width: 100%;
@@ -359,29 +364,49 @@ html, body, .pane, .view{
   left: 0;
   top: 50%;
   margin-top: -100px;
-  color: #eee;
+  color: #F4E8D8;
   font-family: serif;
+}
+.days .year{
+    display: block;
+    text-align: center;
+    font-size: 50px;
+    line-height: 1;
+    margin-top: -10px;
 }
 .days .week{
   position: relative;
   display: flex;
   margin: 0;
 }
-.days .day,
-.days .empty,
-.days .disabled{
+.days .day{
   flex: 1;
   box-sizing: border-box;
+  box-shadow: 0.5px 0.5px 0 #999;
+}
+.days .able,
+.days .disable{
+  display: block;
   height: 40px;
   font-size: 16px;
   line-height: 40px;
-  box-shadow: 0.5px 0.5px 0 #bbb;
   text-align: center;
 }
-.days .day{
+.days .able{
   color: #333;
-  font-weight: bold;
 }
-.days .disabled{
-  color: #999;
+.days .able.activated{
+  box-shadow: 0.5px 0.5px 0 #bbb, 1px 1px 2px rgba(0, 0, 0, .15) inset;
+  color: #f90;
+  background-color: #f5f2ec;
+  text-indent: 1px;
+  line-height: 42px;
+}
+.days .disable{
+  color: #bbb;
+}
+.day .current{
+    box-shadow: 1px 1px 2px rgba(0,0,0,.3) inset;
+    background-color: #f90;
+    color: #fff;
 }

@@ -17,6 +17,11 @@ angular.module('app.controllers', [])
 			scope: $scope
 		});
 	};
+	
+	$scope.StartDateBegin = "2015-11-20";
+	$scope.showDate = function(){
+		console.log($scope.StartDateBegin);
+	};
 })
 .controller('ListController',function($scope) {
 	console.log("list");

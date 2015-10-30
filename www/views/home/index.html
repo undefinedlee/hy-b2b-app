@@ -21,20 +21,20 @@
 			<p>
 				<span class="name">出团日期</span>
 				<span class="half">
-					<a class="input" calendar>
-						2015-11-20
-						<em>周六</em>
-					</a>
+					<calendar class="input" placeholder="选择日期" ng-model="StartDateBegin">
+						{{month}}月{{day}}日
+						<em>{{week}}</em>
+					</calendar>
 				</span>
 				<span class="half">
-					<a class="input" calendar>
-						2015-12-30
-						<em>周日</em>
-					</a>
+					<calendar class="input" placeholder="选择日期" ng-model="StartDateEnd">
+						{{month}}月{{day}}日
+						<em>{{week}}</em>
+					</calendar>
 				</span>
 				<span class="split"></span>
 			</p>
-			<a class="search-btn">搜索产品</a>
+			<a class="search-btn" ng-click="showDate()">搜索产品</a>
 		</div>
 	</ion-pane>
 </ion-view>
