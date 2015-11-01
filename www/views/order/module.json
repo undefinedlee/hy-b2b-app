@@ -1,0 +1,9 @@
+{
+	"name": "order",
+	"group": "views",
+	"version": "0.0.0",
+	"module-type": "module",
+	"entries": [
+		"index.txt"
+	]
+}

@@ -1,0 +1,10 @@
+{
+	"name": "style",
+	"group": "mods",
+	"version": "0.0.0",
+	"module-type": "module",
+	"entries": [
+		"index.styl",
+		"iconfont/*"
+	]
+}

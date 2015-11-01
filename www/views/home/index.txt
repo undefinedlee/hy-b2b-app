@@ -1,0 +1,40 @@
+<ion-view title="首页" hide-nav-bar="true">
+	<ion-content padding="false">
+		<ion-slide-box class="banner">
+			<ion-slide>
+				<img src="http://img3.3lian.com/2013/c4/92/d/56.jpg" />
+			</ion-slide>
+			<ion-slide on-slide-changed="slideHasChanged(index)">
+				<img src="http://img3.3lian.com/2013/c4/92/d/62.jpg" />
+			</ion-slide>
+		</ion-slide-box>
+		<div class="banner-mask"></div>
+		<div class="search-bar">
+			<p>
+				<span class="name">出发城市</span>
+				<a class="input" ng-click="selectStart()">北京、上海</a>
+			</p>
+			<p>
+				<span class="name">目的地</span>
+				<a class="input" ng-click="selectDest()">欧洲</a>
+			</p>
+			<p>
+				<span class="name">出团日期</span>
+				<span class="half">
+					<calendar class="input" placeholder="选择日期" ng-model="StartDateBegin">
+						{{month}}月{{day}}日
+						<em>周{{week | weekName}}</em>
+					</calendar>
+				</span>
+				<span class="half">
+					<calendar class="input" placeholder="选择日期" ng-model="StartDateEnd">
+						{{month}}月{{day}}日
+						<em>周{{week | weekName}}</em>
+					</calendar>
+				</span>
+				<span class="split"></span>
+			</p>
+			<a class="search-btn" ng-click="showDate()">搜索产品</a>
+		</div>
+	</ion-content>
+</ion-view>

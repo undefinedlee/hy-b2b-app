@@ -1,0 +1,9 @@
+{
+	"name": "detail",
+	"group": "controllers",
+	"version": "0.0.0",
+	"module-type": "module",
+	"entries": [
+		"index.js"
+	]
+}

@@ -1,0 +1,11 @@
+{
+	"name": "ionic",
+	"group": "mods",
+	"version": "0.0.0",
+	"module-type": "module",
+	"entries": [
+		"index.js",
+		"ionic.css",
+		"fonts/*"
+	]
+}

@@ -1,0 +1,85 @@
+.item{
+	margin: 10px;
+	border: none;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, .1);
+    border-radius: 3px;
+}
+.product-item{
+    padding: 0;
+}
+.product-item .title{
+    background-image: linear-gradient(0deg, #DBD4C4, #DBD4C4 50%, transparent 50%);
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: 100% 1px;
+    padding: 0 10px;
+    line-height: 40px;
+    color: #333;
+    margin-bottom: 0;
+}
+.product-item .tour{
+    display: block;
+    margin-left: 15px;
+    padding-right: 60px;
+    background-image: linear-gradient(0deg, #DBD4C4, #DBD4C4 50%, transparent 50%);
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: 100% 1px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+    color: #666;
+    text-decoration: none;
+    clear: both;
+    overflow: hidden;
+}
+.product-item .tour .icon{
+  float: right;
+  margin-right: -50px;
+  transform: rotate(180deg);
+  font-size: 20px;
+  color: #DBD4C4;
+}
+.product-item .tour.activated{
+  background-image: linear-gradient(0deg, #f90, #f90 50%, transparent 50%);
+  transform: translate3d(1px, 1px, 0);
+}
+.product-item .tour.activated .icon{
+  color: #f90;
+}
+.product-item .date,
+.product-item .storage,
+.product-item .price{
+  float: left;
+  width: 33%;
+}
+.product-item .storage{
+  text-align: center;
+  width: 34%;
+  color: #999;
+}
+.product-item .storage strong{
+  color: #0a0;
+}
+.product-item .price{
+  text-align: right;
+  font-size: 8px;
+  color: #999;
+}
+.product-item .price strong{
+  font-size: 14px;
+  color: #f90;
+}
+.product-item .more{
+    display: block;
+    font-size: 18px;
+    text-align: center;
+    height: 30px;
+    line-height: 1;
+    color: #C0B49D;
+    clear: both;
+}
+.product-item .more.activated{
+  color: #f90;
+  font-size: 20px;
+}

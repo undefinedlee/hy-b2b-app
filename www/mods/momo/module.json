@@ -1,0 +1,9 @@
+{
+	"name": "momo",
+	"group": "mods",
+	"version": "0.0.0",
+	"module-type": "module",
+	"entries": [
+		"index.njs"
+	]
+}
