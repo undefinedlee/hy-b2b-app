@@ -2013,6 +2013,37 @@ IonicModule
     };
   };
 
+  provider.transitions.views.opacity = function(enteringEle, leavingEle, direction, shouldAnimate) {
+
+    function setStyles(ele, opacity) {
+      var css = {};
+      css.opacity = opacity;
+      ionic.DomUtil.cachedStyles(ele, css);
+    }
+
+    var d = {
+      run: function(step) {
+        if (direction == 'forward') {
+          setStyles(enteringEle, step);
+          setStyles(leavingEle, 1 - step);
+
+        } else if (direction == 'back') {
+          setStyles(enteringEle, 1 - step);
+          setStyles(leavingEle, step);
+
+        } else {
+          // swap, enter, exit
+          setStyles(enteringEle, 1);
+          setStyles(leavingEle, 0);
+        }
+      },
+      shouldAnimate: shouldAnimate && (direction == 'forward' || direction == 'back')
+    };
+
+    return d;
+  };
+  provider.transitions.navBar.opacity = provider.transitions.navBar.android;
+
 
   // private: used to set platform configs
   function setPlatformConfig(platformName, platformConfigs) {
