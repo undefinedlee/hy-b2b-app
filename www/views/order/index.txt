@@ -1,4 +1,4 @@
-<ion-view title="订单列表">
+<ion-view title="订单列表" hide-back-button="true">
     <ion-content padding="true">
     <p>订单列表<p>
     </ion-content>

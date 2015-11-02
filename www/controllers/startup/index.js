@@ -39,54 +39,64 @@ angular.module('controllers.startup',
     $stateProvider
         .state('main', {
             url: "/main",
-            abstract: true,
+            //abstract: true,
             template: views.main
         })
         .state('main.home', {
-            url: "/home",
-            views: {
-                'home': {
+            url: "^/home",
                     template: views.home,
                     controller: "HomeController"
-                }
-            }
+            // views: {
+            //     'home': {
+            //         template: views.home,
+            //         controller: "HomeController"
+            //     }
+            // }
         })
         .state('main.list', {
-            url: "/list",
-            views: {
-                'list': {
+            url: "^/list",
                     template: views.list,
                     controller: "ListController"
-                }
-            }
+            // views: {
+            //     'list': {
+            //         template: views.list,
+            //         controller: "ListController"
+            //     }
+            // }
         })
         .state('main.order', {
-            url: "/order",
-            views: {
-                'order': {
+            url: "^/order",
                     template: views.order,
                     controller: "OrderController"
-                }
-            }
+            // views: {
+            //     'order': {
+            //         template: views.order,
+            //         controller: "OrderController"
+            //     }
+            // }
         })
         .state('main.user', {
-            url: "/user",
-            views: {
-                'user': {
+            url: "^/user",
                     template: views.user,
                     controller: "UserController"
-                }
-            }
+            // views: {
+            //     'user': {
+            //         template: views.user,
+            //         controller: "UserController"
+            //     }
+            // }
         })
-        .state('main.detail', {
-            url: "/detail",
-            views: {
-                'list': {
+        .state('detail', {
+            url: "^/detail",
                     template: views.detail,
                     controller: "DetailController"
-                }
-            }
+            // views: {
+            //     'list': {
+            //         template: views.detail,
+            //         controller: "DetailController"
+            //     }
+            // }
         });
     
-    $urlRouterProvider.otherwise("/main/home");
+    $urlRouterProvider.otherwise("/home");
 });

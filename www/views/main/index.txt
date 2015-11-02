@@ -1,16 +1,34 @@
 <ion-view>
-    <ion-tabs class="tabs-primary" tabs-style="tabs-icon-top">
-        <ion-tab title="首页" icon="i-home" href="#/main/home">
+    <!--<ion-tabs class="tabs-primary" tabs-style="tabs-icon-top">
+        <ion-tab title="首页" icon="i-home" href="#/home">
             <ion-nav-view name="home"></ion-nav-view>
         </ion-tab>
-        <ion-tab title="产品列表" icon="i-list" href="#/main/list">
-            <ion-nav-view name="list"></ion-nav-view>
+        <ion-tab title="产品列表" icon="i-list" href="#/list">
         </ion-tab>
-        <ion-tab title="订单列表" icon="i-order" href="#/main/order">
+        <ion-tab title="订单列表" icon="i-order" href="#/order">
             <ion-nav-view name="order"></ion-nav-view>
         </ion-tab>
-        <ion-tab title="我" icon="i-user" href="#/main/user">
+        <ion-tab title="我" icon="i-user" href="#/user">
             <ion-nav-view name="user"></ion-nav-view>
         </ion-tab>
-    </ion-tabs>
+    </ion-tabs>-->
+    <ion-nav-view animation="aaa"></ion-nav-view>
+    <div class="tabs tabs-icon-top tabs-primary">
+        <a class="tab-item" href="#/home">
+            <i class="icon i-home"></i>
+            首页
+        </a>
+        <a class="tab-item" href="#/list">
+            <i class="icon i-list"></i>
+            产品列表
+        </a>
+        <a class="tab-item" href="#/order">
+            <i class="icon i-order"></i>
+            订单列表
+        </a>
+        <a class="tab-item" href="#/user">
+            <i class="icon i-user"></i>
+            我
+        </a>
+    </div>
 </ion-view>
