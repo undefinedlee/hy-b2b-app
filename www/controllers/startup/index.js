@@ -34,9 +34,8 @@ angular.module('controllers.startup',
 .config(function($ionicConfigProvider) {
     $ionicConfigProvider.tabs.position("bottom");
     $ionicConfigProvider.navBar.alignTitle("center");
-
+    // 渐隐切换动画
     $ionicConfigProvider.transitions.views.opacity = function(enteringEle, leavingEle, direction, shouldAnimate) {
-
         function setStyles(ele, opacity) {
             var css = {};
             css.opacity = opacity;
