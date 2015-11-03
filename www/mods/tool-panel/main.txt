@@ -1,0 +1,4 @@
+<div class="tool-panel hide">
+    <div class="tool-panel-bg"></div>
+    <div class="tool-panel-body"></div>
+</div>

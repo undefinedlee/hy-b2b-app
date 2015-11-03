@@ -5,6 +5,7 @@
 	"module-type": "module",
 	"entries": [
 		"index.txt",
-		"index.styl"
+		"index.styl",
+		"filter.txt"
 	]
 }

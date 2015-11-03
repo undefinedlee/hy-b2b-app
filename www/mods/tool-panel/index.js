@@ -1,55 +1,58 @@
 require("./index.styl");
+var template = require("./main.txt");
 
 angular.module('mods.tool-panel', [])
-.factory("toolPanel", function(){
-	return {};
-})
-.controller("toolPanel", function($scope, $element, $attrs, $templateRequest, $compile, $rootScope, toolPanel){
-	function render(content){
-		$element.html(content.template);
-		$compile($element.contents())(content.scope || $rootScope.$new());
+.factory("toolPanel", function($compile, $rootScope, $templateRequest, $timeout, $document){
+	var node, bg, container;
+	
+	function createPanel(){
+		node = angular.element(template);
+		$document[0].body.appendChild(node[0]);
+		bg = angular.element(node[0].querySelector(".tool-panel-bg"));
+		container = angular.element(node[0].querySelector(".tool-panel-body"));
 	}
 	
-	this.fill = function(content){
-		if(content){
-			if(content.templateUrl){
-				$templateRequest(content.templateUrl, true).then(function(response) {
-					render({
-						template: response,
-						scope: content.scope
-					});
-				});
-			}else if(content.template){
-				render({
-					template: content.template,
-					scope: content.scope
+	var mod = {
+		show: function(options){
+			if(!node){
+				createPanel();
+	
+				bg.on("click", function(){
+					mod.hide();
 				});
 			}
-		}else{
-			$element.empty();
+			
+			function view(options){
+				container.html(options.template);
+				$compile(container.contents())(options.scope || $rootScope.$new());
+				
+				node.removeClass("hide");
+				$timeout(function(){
+					node.addClass("tool-panel-show");
+				}, 1, false);
+			}
+			
+			if(options.templateUrl){
+				$templateRequest(options.templateUrl, true).then(function(response) {
+					view({
+						template: response,
+						scope: options.scope
+					});
+				});
+			}else if(options.template){
+				view({
+					template: options.template,
+					scope: options.scope
+				});
+			}
+		},
+		hide: function(){
+			node.removeClass("tool-panel-show");
+			$timeout(function(){
+				node.addClass("hide");
+			}, 200, false);
 		}
-	};
-	this.show = function(content){
-		if(content){
-			this.fill(content);
-		}
-		$element.addClass("tool-panel-show");
-	};
-	this.hide = function(){
-		$element.removeClass("tool-panel-show");
 	};
 	
-	toolPanel.fill = this.fill;
-	toolPanel.show = this.show;
-	toolPanel.hide = this.hide;
-})
-.directive("toolPanel", function($document){
-	return {
-		restrict: "E",
-		controller: "toolPanel",
-		compile: function compile(element, attrs, linkFn) {
-			element.addClass("tool-panel");
-		},
-		link: function(scope, element, attrs, controller){}
-	};
+	return mod;
 });

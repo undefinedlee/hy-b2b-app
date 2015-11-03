@@ -1,5 +1,10 @@
 <ion-view title="产品详情">
+    <ion-nav-buttons side="right">
+        <button class="button">
+            <i class="icon i-share"></i>
+        </button>
+    </ion-nav-buttons>
     <ion-content padding="true">
-    <p>产品详情<p>
+        <p>产品详情<p>
     </ion-content>
 </ion-view>

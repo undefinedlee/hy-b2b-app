@@ -1,11 +1,15 @@
 <div class="modal">
 	<div class="bar bar-header bar-primary">
 		<div class="buttons">
-			<button class="button ion-ios-arrow-back" ng-click="close()"></button>
+			<button class="button" ng-click="close()">
+				<i class="icon i-back"></i>
+			</button>
 		</div>
 		<h1 class="title">选择日期</h1>
 		<div class="buttons">
-			<button class="button" ng-click="clear()">清除</button>
+			<button class="button" ng-click="clear()">
+				<i class="icon i-delete"></i>
+			</button>
 		</div>
 	</div>
 	<div class="bar bar-subheader weeks">

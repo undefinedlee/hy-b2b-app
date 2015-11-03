@@ -15,19 +15,22 @@
   -webkit-text-stroke-width: 0.2px;
   -moz-osx-font-smoothing: grayscale;
 }
-.icon-user:before { content: "\e600"; }
-.icon-peixunxinxi:before { content: "\e601"; }
-.icon-liebiaoxianshi:before { content: "\e602"; }
-.icon-home:before { content: "\e603"; }
-.icon-xinwenliebiao:before { content: "\e604"; }
-.icon-toright:before { content: "\e605"; }
-.icon-back:before { content: "\e606"; }
-.icon-home1:before { content: "\e607"; }
-.icon-iconfilter16:before { content: "\e608"; }
-.icon-home2:before { content: "\e609"; }
-.icon-list:before { content: "\e60a"; }
-.icon-qiangxin:before { content: "\e60b"; }
-.icon-icordercheck:before { content: "\e60c"; }
-.icon-home3:before { content: "\e60d"; }
-.icon-icon2:before { content: "\e60e"; }
-.icon-liebiaomoshixe615:before { content: "\e60f"; }
+.i-user:before { content: "\e600"; }
+.i-hotel:before { content: "\e60b"; }
+.i-list:before { content: "\e601"; }
+.i-home:before { content: "\e603"; }
+.i-close:before { content: "\e60c"; }
+.i-delete:before { content: "\e605"; }
+.i-share:before { content: "\e602"; }
+.i-back:before { content: "\e606"; }
+.i-sales:before { content: "\e607"; }
+.i-filter:before { content: "\e608"; }
+.i-more:before { content: "\e60a"; }
+.i-zuan:before { content: "\e60d"; }
+.i-checked:before { content: "\e609"; }
+.i-flight:before { content: "\e60f"; }
+.i-clear:before { content: "\e604"; }
+.i-order:before { content: "\e60e"; }
+.i-tel:before { content: "\e610"; }
+.i-meal:before { content: "\e611"; }
+.i-favorite:before { content: "\e612"; }

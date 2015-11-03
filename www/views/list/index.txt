@@ -1,6 +1,6 @@
 <ion-view title="产品列表" hide-back-button="true">
     <ion-nav-buttons side="right">
-        <button class="button">
+        <button class="button" ng-click="filterShow()">
             <i class="icon i-filter"></i>
         </button>
     </ion-nav-buttons>

@@ -63,14 +63,7 @@ angular.module('controllers.startup',
 
         return d;
     };
-    $ionicConfigProvider.transitions.navBar.opacity = $ionicConfigProvider.transitions.navBar.android;
-    // $ionicConfigProvider.transitions.navBar.opacity = function(enteringHeaderBar, leavingHeaderBar, direction) {
-    //     return {
-    //         run: function(step) {
-    //         },
-    //         shouldAnimate: false
-    //     };
-    // };
+    $ionicConfigProvider.transitions.navBar.opacity = $ionicConfigProvider.transitions.navBar.none;
 })
 .config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
