@@ -1,6 +1,8 @@
 var template = require("./main.txt");
 require("./main.styl");
 
+var DateRegex = /^\d{4}\-\d{1,2}\-\d{1,2}$/;
+
 angular.module('mods.calendar', [])
 .controller("calendar", function($scope, $element, $attrs, $ionicModal, $ionicScrollDelegate){
 	var self = this;
@@ -8,9 +10,17 @@ angular.module('mods.calendar', [])
 		show();
 	});
 	
+	$element.on("touchstart", function(){
+		$element.addClass("activated");
+	}).on("touchend", function(){
+		$element.removeClass("activated");
+	});
+	
 	function show(){
 		// 为弹出日历层创建单独的作用域
 		var scope = $scope.$new();
+		
+		scope.months = [];
 
 		scope.close = function(){
 			scope.modal.hide().then(function(){
@@ -40,23 +50,44 @@ angular.module('mods.calendar', [])
 		});
 		scope.modal.show();
 		
-		// toolPanel.show({
-		// 	template: template,
-		// 	scope: scope
-		// });
+		var begin = $scope._begin || (function(date){
+				return [date.getFullYear(), date.getMonth() + 1, date.getDate()].join("-");
+			})(new Date()),
+			end = $scope._end || (function(begin){
+				return [+begin[0] + 1, begin[1], begin[2]].join("-");
+			})(begin.split("-"));
 
-		(function(date){
-			var year = date.getFullYear();
-			var month = date.getMonth();
-			var months = scope.months = [];
-			var startDay = year * 10000 + month * 100 + date.getDate();
-			var now = $scope.year * 10000 + ($scope.month - 1) * 100 + +$scope.day;
-
+		(function(){
+			begin = (function(date){
+				return {
+					year: +date[0],
+					month: +date[1],
+					day: +date[2]
+				};
+			})(begin.split("-"));
+			
+			end = (function(date){
+				date = {
+					year: +date[0],
+					month: +date[1],
+					day: +date[2]
+				};
+				date.month += (date.year - begin.year) * 12;
+				date.year = begin.year;
+				return date;
+			})(end.split("-"));
+			
+			var beginDay = begin.month * 100 + begin.day;
+			var endDay = end.month * 100 + end.day;
+			var now = (+$scope.month + +($scope.year - begin.year) * 12) * 100 + +$scope.day;
+			
 			function createMonthData(year, month){
-				var date = new Date(year, month, 1);
-				var currentMonth = date.getFullYear() * 10000 + date.getMonth() * 100;
-				var dayOffset = currentMonth - startDay;
+				var currentMonth = month * 100;
+				var beginOffset = beginDay - currentMonth;
+				var endOffset = endDay - currentMonth;
 				var nowOffset = now - currentMonth;
+				
+				var date = new Date(year, month - 1, 1);
 				var month = {
 					year: date.getFullYear(),
 					num: date.getMonth() + 1,
@@ -73,7 +104,7 @@ angular.module('mods.calendar', [])
 									current: true,
 									num: i
 								});
-							}else if(dayOffset + i < 0){
+							}else if(i < beginOffset || i > endOffset){
 								days.push({
 									disable: true,
 									num: i
@@ -103,24 +134,25 @@ angular.module('mods.calendar', [])
 							weeks[week].days.push(day);
 						});
 						return weeks;
-					})(date.getDay(), new Date(year, month + 1, 0).getDate())
+					})(date.getDay(), new Date(year, month, 0).getDate())
 				}
 				return month;
 			}
-
-			var count = 12;
+			
+			var months = scope.months;
+			
 			(function createMonths(){
 				scope.$apply(function(){
-					months.push(createMonthData(year, month++));
+					months.push(createMonthData(begin.year, begin.month++));
 				});
-				if(--count > 0){
+				if(begin.month <= end.month){
 					setTimeout(createMonths, 100);
 				}
 			})();
 			// setTimeout(function(){
 			// 	$ionicScrollDelegate.$getByHandle('calendar-scroll').scrollTo(0, 100);
 			// }, 250);
-		})(new Date());
+		})();
 	};
 })
 .directive("calendar", function($rootScope, $compile, $document){
@@ -131,6 +163,8 @@ angular.module('mods.calendar', [])
 		//replace: true,
 		require: '?ngModel',
 		scope: {
+			_begin: '=',
+			_end: '=',
 			year: '=',
             month: '=',
 			day: '=',
@@ -138,44 +172,71 @@ angular.module('mods.calendar', [])
         },
 		compile: function compile(element, attrs, linkFn) {
 			var placeholder = attrs["placeholder"];
+			var begin = attrs["begin"];
+			var end = attrs["end"];
+			
 			var templateNodes = element.contents();
 			var template = $compile(templateNodes);
+			// 用于模板从DOM树中临时脱离出来暂时存放点
 			var tempContainer = angular.element('<div></div>');
+			
 			return function(scope, element, attrs, controller){
+				if(begin){
+					if(DateRegex.test(begin)){
+						scope._begin = begin;
+					}else{
+						scope.$parent.$watch(begin, function(value){
+							scope._begin = value;
+						});
+					}
+				}
+				
+				if(end){
+					if(DateRegex.test(end)){
+						scope._end = end;
+					}else{
+						scope.$parent.$watch(end, function(value){
+							scope._end = value;
+						});
+					}
+				}
+				
 				var lastHasValue = true;
-				controller.$render = function() {
-					var value = this.$viewValue;
-					if(value){
-						value = value.split("-");
-						scope.year = value[0];
-						scope.month = value[1];
-						scope.day = value[2];
-						scope.week = new Date(scope.year, scope.month - 1, scope.day).getDay();
-					}else{
-						scope.year = "";
-						scope.month = "";
-						scope.day = "";
-						scope.week = "";
-					}
-				};
-
-				scope.$watchGroup(["year", "month", "day"], function() {
-					if(scope.year && scope.month && scope.day){
-						if(!lastHasValue){
-							lastHasValue = true;
-							element.empty().removeClass("placeholder");
-							element.append(templateNodes);
+				if(controller){
+					controller.$render = function() {
+						var value = this.$viewValue;
+						if(value){
+							value = value.split("-");
+							scope.year = value[0];
+							scope.month = value[1];
+							scope.day = value[2];
+							scope.week = new Date(scope.year, scope.month - 1, scope.day).getDay();
+						}else{
+							scope.year = "";
+							scope.month = "";
+							scope.day = "";
+							scope.week = "";
 						}
-						controller.$setViewValue([scope.year, scope.month, scope.day].join("-"));
-					}else{
-						if(lastHasValue){
-							lastHasValue = false;
-							tempContainer.append(templateNodes);
-							element.text(placeholder).addClass("placeholder");
+					};
+	
+					scope.$watchGroup(["year", "month", "day"], function() {
+						if(scope.year && scope.month && scope.day){
+							if(!lastHasValue){
+								lastHasValue = true;
+								element.empty().removeClass("placeholder");
+								element.append(templateNodes);
+							}
+							controller.$setViewValue([scope.year, scope.month, scope.day].join("-"));
+						}else{
+							if(lastHasValue){
+								lastHasValue = false;
+								tempContainer.append(templateNodes);
+								element.text(placeholder).addClass("placeholder");
+							}
+							controller.$setViewValue("");
 						}
-						controller.$setViewValue("");
-					}
-				});
+					});
+				}
 				template(scope);
 			};
 		}

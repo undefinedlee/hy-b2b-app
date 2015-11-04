@@ -4,6 +4,8 @@ require("controllers:detail");
 require("controllers:order");
 require("controllers:user");
 require("mods:calendar");
+require("mods:checkbox");
+require("mods:category-checkbox");
 var views = {
     main: require("views:main/index.txt"),
     home: require("views:home/index.txt"),
@@ -20,7 +22,9 @@ angular.module('controllers.startup',
      'controllers.detail',
      'controllers.order',
      'controllers.user',
-     "mods.calendar"])
+     "mods.calendar",
+     "mods.checkbox",
+     "mods.category-checkbox"])
 .run(function($ionicPlatform) {
     $ionicPlatform.ready(function() {
         if(window.cordova && window.cordova.plugins.Keyboard) {

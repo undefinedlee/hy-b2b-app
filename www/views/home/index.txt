@@ -21,13 +21,19 @@
 			<p>
 				<span class="name">出团日期</span>
 				<span class="half">
-					<calendar class="input" placeholder="选择日期" ng-model="StartDateBegin">
+					<calendar class="input"
+							placeholder="选择日期"
+							end="StartDateEnd"
+							ng-model="StartDateBegin">
 						{{month}}月{{day}}日
 						<em>周{{week | weekName}}</em>
 					</calendar>
 				</span>
 				<span class="half">
-					<calendar class="input" placeholder="选择日期" ng-model="StartDateEnd">
+					<calendar class="input"
+							placeholder="选择日期"
+							begin="StartDateBegin"
+							ng-model="StartDateEnd">
 						{{month}}月{{day}}日
 						<em>周{{week | weekName}}</em>
 					</calendar>

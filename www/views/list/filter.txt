@@ -5,7 +5,7 @@
 	</p>
 	<p>
 		<span class="name">目的地</span>
-		<a class="input" ng-click="selectDest()">欧洲</a>
+		<category-checkbox class="input" placeholder="请输入" source="allPlayList" ng-model="playList">{{value}}</category-checkbox>
 	</p>
 	<p>
 		<span class="name">出团日期</span>
@@ -25,11 +25,21 @@
 	</p>
 	<p>
 		<span class="name">线路玩法</span>
-		<a class="input" ng-click="selectDest()">法意瑞</a>
+		<checkbox class="input" ng-model="playList"
+				title="线路玩法"
+				source="allPlayList"
+				placeholder="请选择">
+				{{value.join("、")}}
+		</checkbox>
 	</p>
 	<p>
 		<span class="name">产品特色</span>
-		<a class="input" ng-click="selectDest()">不限</a>
+		<checkbox class="input" ng-model="featureList"
+				title="产品特色"
+				source="allFeatureList"
+				placeholder="请选择">
+				{{value.join("、")}}
+		</checkbox>
 	</p>
 	<a class="confirm-btn" ng-click="ok()">确定</a>
 </div>
