@@ -5,7 +5,7 @@
 	</p>
 	<p>
 		<span class="name">目的地</span>
-		<category-checkbox class="input" placeholder="请输入" source="allPlayList" ng-model="playList">{{value}}</category-checkbox>
+		<category-checkbox class="input" placeholder="请输入" source="allPlayList" ng-model="playList">{{value.join("、")}}</category-checkbox>
 	</p>
 	<p>
 		<span class="name">出团日期</span>

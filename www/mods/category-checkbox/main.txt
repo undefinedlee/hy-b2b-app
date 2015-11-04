@@ -13,6 +13,16 @@
 			<button class="button" ng-click="ok()">确定</button>
 		</div>
 	</div>
-	<ion-content class="category-checkbox-panel">
-	</ion-content>
+	<ion-pane style="top: 44px;">
+		<div class="category-checkbox-tabs">
+			<a>热门</a>
+			<a class="current">欧洲</a>
+			<a>亚洲</a>
+			<a>澳美非</a>
+			<a>海岛</a>
+		</div>
+		<div class="category-checkbox-panels">
+			<ion-content></ion-content>
+		</div>
+	</ion-pane>
 </div>
