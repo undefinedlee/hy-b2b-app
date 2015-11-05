@@ -80,6 +80,11 @@ angular.module('mods.calendar', [])
 			var beginDay = begin.month * 100 + begin.day;
 			var endDay = end.month * 100 + end.day;
 			var now = (+$scope.month + +($scope.year - begin.year) * 12) * 100 + +$scope.day;
+
+			scope.startTop = function(){
+				//var num = (+$scope.month + +($scope.year - begin.year) * 12 - begin.month);
+				return 0;
+			};
 			
 			function createMonthData(year, month){
 				var currentMonth = month * 100;

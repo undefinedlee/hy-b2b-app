@@ -21,7 +21,7 @@
 		<span>五</span>
 		<span class="weekend">六</span>
 	</div>
-	<ion-content class="calendar-panel" delegate-handle="calendar-scroll">
+	<ion-content class="calendar-panel" delegate-handle="calendar-scroll" start-y="{{startTop()}}">
 		<div class="days" ng-repeat="month in months">
 			<span class="month">
 				{{month.num}}

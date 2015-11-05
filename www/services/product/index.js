@@ -169,6 +169,7 @@ angular.module('Services.Product', [])
 .factory("Tour", function(){
 	return {
 		Info: function(tourId){},
+		TourList: function(productId){},
 		Sales: function(){},
 		SalesAll: function(){},
 		Favorite: function(tourId){},

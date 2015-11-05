@@ -5,7 +5,7 @@ require("services:product");
 var filterTemplate = require("views:list/filter.txt");
 
 angular.module('controllers.list', ['mods.tool-panel', 'Services.Common', 'Services.Product'])
-.controller('ListController',function($scope, $ionicLoading, toolPanel, Common, Product) {
+.controller('ListController',function($scope, $ionicLoading, $timeout, toolPanel, Common, Product) {
 	// 过滤条件
 	var filters = {
 		startCitys: [],
@@ -16,22 +16,37 @@ angular.module('controllers.list', ['mods.tool-panel', 'Services.Common', 'Servi
 		featureList: [],
 		page: 1
 	};
-	// 搜索方法
-	function load(){
-		if(filters.page === 1){
-			$ionicLoading.show({
-				template: '<ion-spinner icon="ios" class="spinner-light"></ion-spinner>'
-			});
-		}
+
+	$scope.hasMore = false;
+	function search(){
+		$ionicLoading.show({
+			template: '<ion-spinner icon="ios" class="spinner-light"></ion-spinner>'
+		});
 		Product.List(filters, function(data){
 			$ionicLoading.hide();
 			if(data.code === 200){
-				if(filters.page === 1){
-					$scope.products = data.content.products;
-				}else{
-					$scope.products = ($scope.products || []).concat(data.content.products || []);
-				}
+				data = data.content;
+				$scope.products = data.products;
 				filters.page ++;
+				$scope.hasMore = data.page < data.pageCount;
+			}
+		});
+	}
+	// 搜索方法
+	var loading = false;
+	function load(){
+		if(loading){
+			return;
+		}
+		loading = true;
+		Product.List(filters, function(data){
+			loading = false;
+			if(data.code === 200){
+				data = data.content;
+				$scope.products = ($scope.products || []).concat(data.products || []);
+				$scope.$broadcast('scroll.infiniteScrollComplete');
+				filters.page ++;
+				$scope.hasMore = data.page < data.pageCount;
 			}
 		});
 	}
@@ -67,8 +82,10 @@ angular.module('controllers.list', ['mods.tool-panel', 'Services.Common', 'Servi
 			filters.playList = scope.playList;
 			filters.featureList = scope.featureList;
 			filters.page = 1;
-			load();
+			search();
 			toolPanel.hide();
 		};
 	};
+
+	search();
 });

@@ -20,6 +20,6 @@
                 <a class="more" ng-if="product.hasMore">...</a>
             </ion-item>
         </ion-list>
-        <ion-infinite-scroll on-infinite="load()" distance="1%"></ion-infinite-scroll>
+        <ion-infinite-scroll on-infinite="load()" distance="1%" spinner="dots" ng-if="hasMore"></ion-infinite-scroll>
     </ion-content>
 </ion-view>
