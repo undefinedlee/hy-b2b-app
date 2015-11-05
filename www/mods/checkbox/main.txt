@@ -11,11 +11,9 @@
 		</div>
 	</div>
 	<ion-content class="checkbox-panel">
-		<a ng-repeat="item in items" ng-click="check(item.value)">
-			<i class="icon i-checked checked" ng-if="item.checked"></i>
-			<span class="checked" ng-if="item.checked">{{item.name}}</span>
-			<i class="icon i-checked" ng-if="!item.checked"></i>
-			<span ng-if="!item.checked">{{item.name}}</span>
+		<a class="{{checkClass(item.checked)}}" ng-repeat="item in items" ng-click="check(item.value)">
+			<i class="icon i-checked"></i>
+			{{item.name}}
 		</a>
 	</ion-content>
 </div>

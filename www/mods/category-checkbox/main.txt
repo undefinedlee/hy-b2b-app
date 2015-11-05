@@ -15,14 +15,21 @@
 	</div>
 	<ion-pane style="top: 44px;">
 		<div class="category-checkbox-tabs">
-			<a>热门</a>
-			<a class="current">欧洲</a>
-			<a>亚洲</a>
-			<a>澳美非</a>
-			<a>海岛</a>
+			<a class="{{checkClass('has-checked', category.hasChecked)}}{{checkClass('current', $index === 0)}}"
+				ng-click="switchCategory($index)"
+				ng-repeat="category in categorys">{{category.name}}</a>
 		</div>
-		<div class="category-checkbox-panels">
-			<ion-content></ion-content>
+		<div class="category-checkbox-panel{{checkClass('hide', $index !== 0)}}" ng-repeat="category in categorys">
+			<ion-content>
+				<p class="clearfix">
+					<a class="item-{{item.name.length}}{{checkClass('checked', item.checked)}}"
+						ng-repeat="item in category.items"
+						ng-click="check('item', item.value)">
+						{{item.name}}
+						<i class="icon i-check-trangle"></i>
+					</a>
+				</p>
+			</ion-content>
 		</div>
 	</ion-pane>
 </div>

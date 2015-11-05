@@ -39,6 +39,10 @@ angular.module('mods.checkbox', [])
 			});
 		};
 		
+		scope.checkClass = function(checked){
+			return checked ? " checked" : "";
+		}
+		
 		scope.ok = function(value){
 			scope.close();
 			$scope._value = scope.items.filter(function(item){

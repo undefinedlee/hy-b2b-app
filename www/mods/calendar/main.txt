@@ -32,6 +32,7 @@
 					<a class="able" ng-click="select(month.year, month.num, day.num)" ng-if="day.able">{{day.num}}</a>
 					<a class="able current" ng-click="select(month.year, month.num, day.num)" ng-if="day.current">{{day.num}}</a>
 					<span class="disable" ng-if="day.disable">{{day.num}}</span>
+					<span class="empty" ng-if="day.empty"></span>
 				</span>
 			</p>
 		</div>

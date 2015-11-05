@@ -28,6 +28,7 @@
 .i-filter:before { content: "\e608"; }
 .i-more:before { content: "\e60a"; }
 .i-zuan:before { content: "\e60d"; }
+.i-check-trangle:before { content: "\e614"; }
 .i-checked:before { content: "\e609"; }
 .i-flight:before { content: "\e60f"; }
 .i-clear:before { content: "\e604"; }

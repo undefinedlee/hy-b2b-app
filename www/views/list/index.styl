@@ -18,10 +18,8 @@
         display: block
         margin-left: 15px
         padding-right: 60px
-        background-image: linear-gradient(0deg, #DBD4C4, #DBD4C4 50%, transparent 50%)
-        background-repeat: no-repeat
-        background-position: bottom
-        background-size: 100% 1px
+        box-shadow: 0 0.5px 0 #DBD4C4
+        border-bottom: 0.5px solid #DBD4C4
         height: 40px
         line-height: 40px
         font-size: 14px
@@ -29,6 +27,9 @@
         text-decoration: none
         clear: both
         overflow: hidden
+        &:last-child
+            box-shadow: none
+            border-bottom: none
         .icon
             float: right
             margin-right: -50px
@@ -36,8 +37,11 @@
             font-size: 16px
             color: #DBD4C4
         &.activated
-            background-image: linear-gradient(0deg, #f90, #f90 50%, transparent 50%)
+            box-shadow: 0 0.5px 0 #f90
+            border-bottom-color: #f90
             transform: translate3d(1px, 1px, 0)
+            &:last-child
+                box-shadow: none
             .icon
                 color: #f90
     .date

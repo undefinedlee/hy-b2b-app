@@ -1,4 +1,4 @@
 angular.module('controllers.detail', [])
-.controller('DetailController',function($scope) {
-	console.log("detail");
+.controller('DetailController',function($scope, $stateParams) {
+	console.log("detail:" + $stateParams.tourId);
 });

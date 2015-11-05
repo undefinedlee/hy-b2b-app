@@ -18,34 +18,54 @@ angular.module('mods.category-checkbox', [])
 		// 为弹出日历层创建单独的作用域
 		var scope = $scope.$new();
 		
-		scope.items = $scope._source;
-		scope.items.forEach(function(item){
-			item.checked = $scope._value.indexOf(item.value) !== -1;
-		});
-		scope.title = $scope._title;
+		scope.categorys = $scope._source;
+		//scope.items.forEach(function(item){
+		//	item.checked = $scope._value.indexOf(item.value) !== -1;
+		//});
 
 		scope.close = function(){
 			scope.modal.hide().then(function(){
 				scope.modal.remove();
 			});
 		};
-
-		scope.check = function(value){
-			scope.items.some(function(item){
-				if(item.value == value){
-					item.checked = !item.checked;
-					return true;
-				}
+		
+		var itemHash = {},
+			itemCategoryHash = {};
+		scope.categorys.forEach(function(category){
+			category.items.forEach(function(item){
+				itemHash[item.value] = item;
+				item.checked = $scope._value.indexOf(item.value) !== -1;
+				itemCategoryHash[item.value] = category;
 			});
+			checkCategoryCheck(category);
+		});
+		
+		function checkCategoryCheck(category){
+			category.hasChecked = category.checked || category.items.some(function(item){
+				return item.checked;
+			});
+		}
+
+		scope.check = function(type, value){
+			if(type === "item"){
+				itemHash[value].checked = !itemHash[value].checked;
+				checkCategoryCheck(itemCategoryHash[value]);
+			}
 		};
+		
+		scope.checkClass = function(className, checked){
+			return checked ? " " + className : "";
+		}
 		
 		scope.ok = function(value){
 			scope.close();
-			$scope._value = scope.items.filter(function(item){
-				return item.checked;
-			}).map(function(item){
-				return item.value;
-			});
+			var values = [];
+			for(var value in itemHash){
+				if(itemHash[value].checked){
+					values.push(itemHash[value].value);
+				}
+			}
+			$scope._value = values;
 		};
 
 		scope.modal = $ionicModal.fromTemplate(template, {
@@ -53,6 +73,15 @@ angular.module('mods.category-checkbox', [])
 			animation: 'slide-in-left'
 		});
 		scope.modal.show();
+		
+		scope.switchCategory = function(index){
+			var tabs = angular.element(scope.modal.modalEl.querySelectorAll(".category-checkbox-tabs a"));
+			var panels = angular.element(scope.modal.modalEl.querySelectorAll(".category-checkbox-panel"));
+			tabs.removeClass("current");
+			tabs.eq(index).addClass("current");
+			panels.addClass("hide");
+			panels.eq(index).removeClass("hide");
+		};
 	}
 })
 .directive("categoryCheckbox", function($rootScope, $compile, $document){
@@ -63,7 +92,6 @@ angular.module('mods.category-checkbox', [])
 		//replace: true,
 		require: '?ngModel',
 		scope: {
-			_title: '=',
 			_source: '=',
 			_value: '=',
 			value: '='
@@ -82,12 +110,13 @@ angular.module('mods.category-checkbox', [])
 				scope.$parent.$watch(source, function(value){
 					scope._source = value;
 				});
-				scope._title = title;
 				
 				scope.$watch("_value", function(){
 					var sourceHash = {};
-					scope._source.forEach(function(item){
-						sourceHash[item.value] = item.name;
+					scope._source.forEach(function(category){
+						category.items.forEach(function(item){
+							sourceHash[item.value] = item.name;
+						});
 					});
 					scope.value = scope._value.map(function(value){
 						return sourceHash[value];

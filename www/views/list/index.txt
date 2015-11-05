@@ -9,22 +9,17 @@
             pulling-text="下拉刷新...">
         </ion-refresher>-->
         <ion-list>
-            <ion-item class="product-item" ng-repeat="i in [1,2,3,4,5,6,7,8,9,10]">
-                <h2 class="title">法瑞意德13天11晚（AZ）·金色山口+少女峰</h2>
-                <a class="tour" href="#/detail">
-                    <span class="date">12/{{i}}</span>
-                    <span class="storage">余位：<strong>&gt;9</strong></span>
-                    <span class="price">&yen;<strong>12999</strong></span>
+            <ion-item class="product-item" ng-repeat="product in products">
+                <h2 class="title">{{product.name}}</h2>
+                <a class="tour" ng-repeat="tour in product.tours" href="#/detail/{{tour.id}}">
+                    <span class="date">{{tour.date}}</span>
+                    <span class="storage">余位：<strong>{{tour.num}}</strong></span>
+                    <span class="price">&yen;<strong>{{tour.price}}</strong></span>
                     <i class="icon i-back"></i>
                 </a>
-                <a class="tour" href="#/detail">
-                    <span class="date">12/{{i}}</span>
-                    <span class="storage">余位：<strong>&gt;9</strong></span>
-                    <span class="price">&yen;<strong>12999</strong></span>
-                    <i class="icon i-back"></i>
-                </a>
-                <a class="more">...</a>
+                <a class="more" ng-if="product.hasMore">...</a>
             </ion-item>
         </ion-list>
+        <ion-infinite-scroll on-infinite="load()" distance="1%"></ion-infinite-scroll>
     </ion-content>
 </ion-view>

@@ -121,7 +121,7 @@ angular.module('controllers.startup',
             // }
         })
         .state('detail', {
-            url: "^/detail",
+            url: "^/detail/{tourId}",
                     template: views.detail,
                     controller: "DetailController"
             // views: {

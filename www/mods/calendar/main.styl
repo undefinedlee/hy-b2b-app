@@ -23,8 +23,10 @@
 .days
     position: relative
     margin-bottom: 20px
-    box-shadow: -0.5px -0.5px 0 #f0ede7
-    border: 0.5px solid #f0ede7
+    //box-shadow: -0.5px -0.5px 0 #f0ede7
+    //border: 0.5px solid #f0ede7
+    box-shadow: -0.5px -0.5px 0 #f5f2ec
+    border: 0.5px solid #f5f2ec
     border-width: 0.5px 0 0 0.5px
     background-color: #fff
     .month
@@ -37,8 +39,10 @@
         left: 0
         top: 50%
         margin-top: -100px
-        color: #F4E8D8
+        //color: #F4E8D8
         font-family: serif
+        //opacity: 0.5
+        color: #f5f2ec
     .year
         display: block
         text-align: center
@@ -52,18 +56,21 @@
     .day
         flex: 1
         box-sizing: border-box
-        box-shadow: 0.5px 0.5px 0 #f0ede7
-        border: 0.5px solid #f0ede7
+        //box-shadow: 0.5px 0.5px 0 #f0ede7
+        //border: 0.5px solid #f0ede7
+        box-shadow: 0.5px 0.5px 0 #f5f2ec
+        border: 0.5px solid #f5f2ec
         border-width: 0 0.5px 0.5px 0
         .able
         .disable
+        .empty
             display: block
             height: 40px
             font-size: 16px
             line-height: 40px
             text-align: center
         .able
-            color: #333
+            color: #555
             &.activated
                 box-shadow: 0.5px 0.5px 0 #bbb, 1px 1px 2px rgba(0, 0, 0, .15) inset
                 color: #f90
@@ -71,8 +78,10 @@
                 text-indent: 1px
                 line-height: 42px
         .disable
-            color: #bbb
+            color: #ccc
         .current
             box-shadow: 1px 1px 2px rgba(0,0,0,.3) inset
             background-color: #f90
             color: #fff
+        //.empty
+        //    background-color: #f5f2ec
