@@ -9,10 +9,11 @@ angular.module('mods.tool-panel', [])
 		node = angular.element(template);
 		$document[0].body.appendChild(node[0]);
 		bg = angular.element(node[0].querySelector(".tool-panel-bg"));
-		container = angular.element(node[0].querySelector(".tool-panel-body"));
+		mod.container = container = angular.element(node[0].querySelector(".tool-panel-body"));
 	}
 	
 	var mod = {
+		container: null,
 		show: function(options){
 			if(!node){
 				createPanel();

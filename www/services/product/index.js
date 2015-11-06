@@ -7,7 +7,7 @@ angular.module('Services.Product', [])
 				callback({
 					code: 200,
 					content: {
-						"page": 2,
+						"page": filters.page,
 						"pageCount": 6,
 						"products": [{
 							"id": 1,
@@ -162,14 +162,41 @@ angular.module('Services.Product', [])
 						}]
 					}
 				});
-			}, 2000);
+			}, 3000);
 		}
 	};
 })
 .factory("Tour", function(){
 	return {
 		Info: function(tourId){},
-		TourList: function(productId){},
+		TourList: function(productId, callback){
+			setTimeout(function(){
+				callback({
+					code: 200,
+					content: [{
+						"id": 1,
+						"date": "11/21",
+						"price": 12999,
+						"num": 2
+					}, {
+						"id": 2,
+						"date": "12/18",
+						"price": 12999,
+						"num": 2
+					}, {
+						"id": 3,
+						"date": "11/21",
+						"price": 12999,
+						"num": 2
+					}, {
+						"id": 4,
+						"date": "12/18",
+						"price": 12999,
+						"num": 2
+					}]
+				});
+			}, 5000);
+		},
 		Sales: function(){},
 		SalesAll: function(){},
 		Favorite: function(tourId){},

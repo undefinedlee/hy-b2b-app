@@ -4,10 +4,11 @@
             <i class="icon i-filter"></i>
         </button>
     </ion-nav-buttons>
-    <ion-content class="has-tabs" padding="false">
-        <!--<ion-refresher
-            pulling-text="下拉刷新...">
-        </ion-refresher>-->
+    <ion-content class="has-tabs" padding="false" delegate-handle="list">
+        <ion-refresher
+            pulling-text="下拉刷新..."
+            on-refresh="search()">
+        </ion-refresher>
         <ion-list>
             <ion-item class="product-item" ng-repeat="product in products">
                 <h2 class="title">{{product.name}}</h2>
@@ -17,9 +18,12 @@
                     <span class="price">&yen;<strong>{{tour.price}}</strong></span>
                     <i class="icon i-back"></i>
                 </a>
-                <a class="more" ng-if="product.hasMore">...</a>
+                <p ng-if="product.hasMore&&product.loading" style="text-align:center;padding-top:10px;">
+                    <ion-spinner icon="dots"></ion-spinner>
+                </p>
+                <a class="more" ng-if="product.hasMore&&!product.loading" ng-click="loadTours(product.id)">...</a>
             </ion-item>
         </ion-list>
-        <ion-infinite-scroll on-infinite="load()" distance="1%" spinner="dots" ng-if="hasMore"></ion-infinite-scroll>
+        <ion-infinite-scroll on-infinite="load()" distance="1%" spinner="dots" ng-if="hasMore" immediate-check="false"></ion-infinite-scroll>
     </ion-content>
 </ion-view>

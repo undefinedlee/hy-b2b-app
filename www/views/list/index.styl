@@ -75,6 +75,46 @@
             font-size: 20px
 .filter-panel
     padding: 15px
+    .filter-type
+        position: absolute
+        left: 25px
+        top: -36px
+        margin: 0
+        padding: 0
+        a
+            position: relative
+            float: left
+            height: 36px
+            padding: 0 20px
+            line-height: 36px
+            font-size: 16px
+            border-radius: 10px 10px 0 0
+            background-color: #fff
+            margin-right: 10px
+            opacity: 0.7
+            &:before
+            &:after
+                content: " "
+                position: absolute
+                bottom: 0
+                width: 0
+                height: 0
+                border-width: 16px 9px
+                border-style: solid
+            &:before
+                left: -16px
+                border-color: transparent #fff #fff transparent
+            &:after
+                right: -16px
+                border-color: transparent transparent #fff #fff
+        .current
+            opacity: 1
+    .tab-panel
+        transform: translate3d(0, 0, 0)
+        transition: transform 200ms ease
+        background-color: #fff
+    .tab-panel-hide
+        transform: translate3d(100%, 0, 0)
     p
         position: relative
         height: 45px
