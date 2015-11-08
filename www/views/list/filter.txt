@@ -52,5 +52,11 @@
 		</p>
 		<a class="confirm-btn" ng-click="ok()">确定</a>
 	</div>
-	<div class="tab-panel J-tab-panel tab-panel-hide">lalalalalla</div>
+	<div class="tab-panel J-tab-panel tab-panel-hide">
+		<p>
+			<span class="name">产品名称/团号</span>
+			<a class="input" ng-click=""></a>
+		</p>
+		<a class="confirm-btn" ng-click="ok()">确定</a>
+	</div>
 </div>

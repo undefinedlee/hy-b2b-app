@@ -14,6 +14,8 @@ angular.module('mods.tool-panel', [])
 	
 	var mod = {
 		container: null,
+		onBeforeShow: function(){},
+		onBeforeHide: function(){},
 		show: function(options){
 			if(!node){
 				createPanel();
@@ -23,11 +25,14 @@ angular.module('mods.tool-panel', [])
 				});
 			}
 			
+			var self = this;
+
 			function view(options){
 				container.html(options.template);
 				$compile(container.contents())(options.scope || $rootScope.$new());
 				
 				node.removeClass("hide");
+				self.onBeforeShow();
 				$timeout(function(){
 					node.addClass("tool-panel-show");
 				}, 1, false);
@@ -49,7 +54,9 @@ angular.module('mods.tool-panel', [])
 		},
 		hide: function(){
 			node.removeClass("tool-panel-show");
+			var self = this;
 			$timeout(function(){
+				self.onBeforeHide();
 				node.addClass("hide");
 			}, 200, false);
 		}

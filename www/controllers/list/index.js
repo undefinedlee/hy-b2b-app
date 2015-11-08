@@ -87,19 +87,48 @@ angular.module('controllers.list', ['mods.tool-panel', 'Services.Common', 'Servi
 			scope.featureSource = data;
 		});
 		
+		var container,
+			tabs,
+			panels,
+			panelHeights = [];
+
+		toolPanel.onBeforeShow = function(){
+			container = angular.element(toolPanel.container[0].querySelector(".filter-panel"));
+			tabs = angular.element(container[0].querySelectorAll(".J-tabs a"));
+			panels = angular.element(container[0].querySelectorAll(".J-tab-panel"));
+
+			var currentIndex;
+
+			for(var i = 0, l = panels.length; i < l; i ++){
+				panelHeights[i] = panels[i].offsetHeight;
+				if(!panels.eq(i).hasClass("tab-panel-hide")){
+					currentIndex = i;
+				}
+			}
+
+			container.css({
+				height: panelHeights[currentIndex] + "px"
+			}).addClass("filter-panel-animate");
+		};
+
+		toolPanel.onBeforeHide = function(){
+			var container = this.container[0].querySelector(".filter-panel");
+			container.style.height = "";
+		};
+		
 		toolPanel.show({
 			template: filterTemplate,
 			scope: scope
 		});
-		
-		var tabs = angular.element(toolPanel.container[0].querySelectorAll(".J-tabs a")),
-			panels = angular.element(toolPanel.container[0].querySelectorAll(".J-tab-panel"));
 		
 		scope.switchTab = function(index){
 			tabs.removeClass("current");
 			tabs.eq(index).addClass("current");
 			panels.addClass("tab-panel-hide");
 			panels.eq(index).removeClass("tab-panel-hide");
+			container.css({
+				height: panelHeights[index] + "px"
+			});
 		};
 
 		scope.ok = function(){

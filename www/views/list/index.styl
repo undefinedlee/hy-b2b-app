@@ -74,7 +74,6 @@
             color: #f90
             font-size: 20px
 .filter-panel
-    padding: 15px
     .filter-type
         position: absolute
         left: 25px
@@ -110,9 +109,15 @@
         .current
             opacity: 1
     .tab-panel
+        position: absolute
+        left: 0
+        top: 0
+        width: 100%
+        min-height: 100%
         transform: translate3d(0, 0, 0)
         transition: transform 200ms ease
         background-color: #fff
+        padding: 15px
     .tab-panel-hide
         transform: translate3d(100%, 0, 0)
     p
@@ -178,3 +183,5 @@
         &.activated
             background-color: #ED8E00
             transform: translate3d(1px, 1px, 0)
+.filter-panel-animate
+    transition: height 200ms ease
