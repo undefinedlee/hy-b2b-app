@@ -2,7 +2,22 @@ angular.module('Services.Common', [])
 .factory("Common", function(){
 	return {
 		StartCity: function(callback){
-			return callback([]);
+			return callback([{
+				name: "北京",
+				value: 1
+			}, {
+				name: "上海",
+				value: 2
+			}, {
+				name: "广州",
+				value: 3
+			}, {
+				name: "成都",
+				value: 4
+			}, {
+				name: "武汉",
+				value: 5
+			}]);
 		},
 		Dest: function(callback){
 			return callback([{

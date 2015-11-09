@@ -1,10 +1,96 @@
-<ion-view title="产品详情">
+<ion-view id="product-detail" title="产品详情">
     <ion-nav-buttons side="right">
         <button class="button">
             <i class="icon i-share"></i>
         </button>
     </ion-nav-buttons>
-    <ion-content padding="true">
-        <p>产品详情<p>
+    <ion-content class="has-tabs" padding="false">
+        <ion-refresher
+            pulling-text="下拉刷新..."
+            on-refresh="search()">
+        </ion-refresher>
+        <div class="base-info">
+            <h2>
+                五渔村+德法瑞意4国13天10晚（4钻）CZ FCO-CDG（华中区）
+                <span class="zuan">
+                    <i class="icon i-zuan"></i>
+                    <i class="icon i-zuan"></i>
+                    <i class="icon i-zuan"></i>
+                </span>
+            </h2>
+            <p class="info">
+                <span>上海出发</span>
+                <span class="storage">余位：<strong>6</strong></span>
+                <span class="price">&yen;<strong>12999</strong></span>
+            </p>
+            <p class="features">
+                <span>免费wifi</span>
+                <span>包机直飞</span>
+            </p>
+        </div>
+        <div class="start-dates">
+            <h3><i class="icon i-calendar"></i>出发班期</h3>
+            <p>
+                <a>11/20</a>
+                <a>12/10</a>
+            </p>
+        </div>
+        <div class="detail-info">
+            <h3>
+                <a>产品概况</a>
+                <a class="current">12天行程</a>
+                <a>旅行须知</a>
+            </h3>
+            <div class="panel hide"></div>
+            <div class="panel">
+                <ol class="days">
+                    <li class="day">
+                        <h4>
+                            <i>1</i>
+                            北京 - 巴厘岛
+                        </h4>
+                        <dl>
+                            <dt class="icon i-flight"></dt>
+                            <dd>MU780 PEK/DPS 16:00/00:50</dd>
+                            <dt class="icon i-meal"></dt>
+                            <dd>中餐 晚餐</dd>
+                            <dt class="icon i-hotel"></dt>
+                            <dd>待定</dd>
+                        </dl>
+                        <p>今日搭乘东航航空公司国际航班途径上海转机前往美国西部城市洛杉矶。</p>
+                        <p>抵达后导游接机，【好莱坞星光大道】（不少于20分钟）--是条沿着美国好莱坞大道与藤街伸展的人行道，影迷们可以追寻到点点星迹，星光布道上排列着2000多镶铜的五角星，内有姓名和不同的图案，代表明星在电影，电视，广播，唱片及舞台表演方面的成就；【中国戏院】（外观不少于10分钟）--好莱坞大道上最吸引人的地方，这座剧院据说是建造者心仪中国文化而得名。【华特•迪士尼音乐厅】外观拍照留念，可以进入音乐厅大门内，但不进表演大厅（不少于20分钟），【斯坎普中心】是NBA“洛杉矶湖人队““洛杉矶快船队”的主场，也是冰球“国王队”的主场（不少于20分钟），晚餐后入住酒店休息调整时差。</p>
+                    </li>
+                    <li class="day">
+                        <h4>
+                            <i>2</i>
+                            北京 - 巴厘岛
+                        </h4>
+                        <dl>
+                            <dt class="icon i-flight"></dt>
+                            <dd>MU780 PEK/DPS 16:00/00:50</dd>
+                            <dt class="icon i-meal"></dt>
+                            <dd>中餐 晚餐</dd>
+                            <dt class="icon i-hotel"></dt>
+                            <dd>待定</dd>
+                        </dl>
+                        <p>早餐后，酒店办理退房手续，继续行程前往长滩（Long  Beach），长滩是洛杉矶南部的一个港口城市，城市的名字来源于9公里长的海岸线，以疗养胜地而闻名。您可在码头包船出海，出海区域应以看到海豹海鸟等海洋生物。之后前往长滩水族馆，在这巨大的水族馆里，你可以亲眼目睹生活在17个不同环境的栖息地的12，000种海洋动物和550种海洋植物，之后返回洛杉矶前往杜比剧院又称柯达剧院（Kodak  Theatre）位于美国加州好莱坞的好莱坞大道  (Hollywood  Blvd.)上，2001年11月9日启用，是奥斯卡金像奖颁奖礼的举行地点，在2002年开始成为奥斯卡的永久举行地。  柯达剧院是专门为奥斯卡颁奖礼而设计，可容纳3,400名观众，设有全美国其中一个最大的舞台。</p>
+                        <p>全部团员汇合，在杜比剧院享用盛大的晚会。</p>
+                        <p>晚餐后返回酒店入住</p>
+                    </li>
+                </ol>
+            </div>
+            <div class="panel hide"></div>
+        </div>
     </ion-content>
+    <div class="bar bar-footer">
+        <a class="icon-btn">
+            <i class="icon i-favorite"></i>
+            收藏
+        </a>
+        <a class="icon-btn">
+            <i class="icon i-tel"></i>
+            咨询
+        </a>
+        <a class="booking-btn">预定</a>
+    </div>
 </ion-view>

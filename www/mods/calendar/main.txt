@@ -1,4 +1,4 @@
-<div class="modal">
+<div id="calendar" class="modal">
 	<div class="bar bar-header bar-primary">
 		<div class="buttons">
 			<button class="button" ng-click="close()">

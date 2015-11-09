@@ -17,6 +17,7 @@
 }
 .i-user:before { content: "\e600"; }
 .i-hotel:before { content: "\e60b"; }
+.i-calendar:before { content: "\e615"; }
 .i-list:before { content: "\e601"; }
 .i-search:before { content: "\e613"; }
 .i-home:before { content: "\e603"; }

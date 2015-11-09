@@ -74,6 +74,10 @@ angular.module('controllers.list', ['mods.tool-panel', 'Services.Common', 'Servi
 	$scope.filterShow = function(){
 		var scope = $scope.$new();
 		angular.extend(scope, filters);
+		// 出发城市数据源
+		Common.StartCity(function(data){
+			scope.startCitySource = data;
+		});
 		// 目的地数据源
 		Common.Dest(function(data){
 			scope.destSource = data;
