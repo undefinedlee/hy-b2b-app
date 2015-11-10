@@ -39,7 +39,9 @@ angular.module('controllers.detail', [])
 	var extendInfoInited = false;
 	$scope.switchTo = function(index){
 		$scope.tabIndex = index;
-		mainScroll.scrollTo(0, top || 0, true);
+		if(mainScroll.getScrollPosition().top > top){
+			mainScroll.scrollTo(0, top || 0, true);
+		}
 		
 		if(index === 1 && !tripInited){
 			tripInited = true;
