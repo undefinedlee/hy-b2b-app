@@ -18,12 +18,19 @@ angular.module('controllers.list', ['mods.tool-panel', 'Services.Common', 'Servi
 	};
 
 	$scope.hasMore = false;
-	function search(){
-		$ionicLoading.show({
-			template: '<ion-spinner icon="ios" class="spinner-light"></ion-spinner>'
-		});
+	function search(isRefresh){
+		if(!isRefresh){
+			$ionicLoading.show({
+				template: '<ion-spinner icon="ios" class="spinner-light"></ion-spinner>'
+			});
+		}
 		Product.List(angular.copy(filters), function(data){
-			$ionicLoading.hide();
+			if(isRefresh){
+				$scope.$broadcast('scroll.refreshComplete');
+			}else{
+				$ionicLoading.hide();
+			}
+			
 			if(data.code === 200){
 				data = data.content;
 				console.log(data);
@@ -37,18 +44,20 @@ angular.module('controllers.list', ['mods.tool-panel', 'Services.Common', 'Servi
 	// 搜索方法
 	function load(){
 		Product.List(angular.copy(filters), function(data){
+			$scope.$broadcast('scroll.infiniteScrollComplete');
 			if(data.code === 200){
 				data = data.content;
 				console.log(data);
 				$scope.products = ($scope.products || []).concat(data.products || []);
 				filters.page ++;
 				$scope.hasMore = data.page < data.pageCount;
-				$scope.$broadcast('scroll.infiniteScrollComplete');
 			}
 		});
 	}
 	
-	$scope.search = search;
+	$scope.refresh = function(){
+		search(true);
+	};
 	$scope.load = load;
 	
 	$scope.loadTours = function(productId){

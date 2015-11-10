@@ -15,6 +15,7 @@
   -webkit-text-stroke-width: 0.2px;
   -moz-osx-font-smoothing: grayscale;
 }
+.i-more-menu:before { content: "\e616"; }
 .i-user:before { content: "\e600"; }
 .i-hotel:before { content: "\e60b"; }
 .i-calendar:before { content: "\e615"; }
