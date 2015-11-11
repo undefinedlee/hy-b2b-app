@@ -5,5 +5,6 @@ momo.version("views", {
 	"detail": "v.0",
 	"order": "v.0",
 	"user": "v.0",
-	"booking": "v.0"
+	"booking": "v.0",
+	"login": "v.0"
 });

@@ -1,0 +1,19 @@
+<ion-view id="login" title="登陆" hide-nav-bar="true">
+    <ion-pane class="login-panel no-header" padding="false">
+        <div class="login-box">
+            <p class="logo-bar">
+                <i class="logo"></i>
+            </p>
+            <p class="input-item">
+                <i class="icon i-login-user name"></i>
+                <input type="text" />
+            </p>
+            <p class="input-item">
+                <i class="icon i-login-password name"></i>
+                <input type="password" />
+            </p>
+            <a class="submit-btn" href="#/home">登陆</a>
+            <p class="copy-right">&copy; 2015华远国旅</p>
+        </div>
+    </ion-pane>
+</ion-view>

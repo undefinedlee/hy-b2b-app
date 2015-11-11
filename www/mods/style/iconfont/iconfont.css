@@ -29,10 +29,12 @@
 .i-sales:before { content: "\e607"; }
 .i-filter:before { content: "\e608"; }
 .i-more:before { content: "\e60a"; }
+.i-login-password:before { content: "\e618"; }
 .i-zuan:before { content: "\e60d"; }
 .i-check-trangle:before { content: "\e614"; }
 .i-checked:before { content: "\e609"; }
 .i-flight:before { content: "\e60f"; }
+.i-login-user:before { content: "\e619"; }
 .i-clear:before { content: "\e604"; }
 .i-nav-home:before { content: "\e617"; }
 .i-order:before { content: "\e60e"; }

@@ -4,6 +4,7 @@ require("controllers:detail");
 require("controllers:booking");
 require("controllers:order");
 require("controllers:user");
+require("controllers:login");
 require("mods:calendar");
 require("mods:checkbox");
 require("mods:category-checkbox");
@@ -14,7 +15,8 @@ var views = {
     detail: require("views:detail/index.txt"),
     booking: require("views:booking/index.txt"),
     order: require("views:order/index.txt"),
-    user: require("views:user/index.txt")
+    user: require("views:user/index.txt"),
+    login: require("views:login/index.txt")
 };
 
 angular.module('controllers.startup',
@@ -25,6 +27,7 @@ angular.module('controllers.startup',
      'controllers.booking',
      'controllers.order',
      'controllers.user',
+     'controllers.login',
      "mods.calendar",
      "mods.checkbox",
      "mods.category-checkbox"])
@@ -108,6 +111,11 @@ angular.module('controllers.startup',
             url: "^/booking/{tourId}",
             template: views.booking,
             controller: "BookingController"
+        })
+        .state('login', {
+            url: "^/login",
+            template: views.login,
+            controller: "LoginController"
         });
     
     $urlRouterProvider.otherwise("/home");
