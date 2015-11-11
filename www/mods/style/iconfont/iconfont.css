@@ -34,6 +34,7 @@
 .i-checked:before { content: "\e609"; }
 .i-flight:before { content: "\e60f"; }
 .i-clear:before { content: "\e604"; }
+.i-nav-home:before { content: "\e617"; }
 .i-order:before { content: "\e60e"; }
 .i-tel:before { content: "\e610"; }
 .i-meal:before { content: "\e611"; }

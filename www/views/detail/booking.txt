@@ -1,0 +1,32 @@
+<div>
+    <ion-content class="has-tabs" padding="false">
+        <div class="group">
+            <a class="input-item">
+                <span class="name">销售</span>
+                <span class="value"></span>
+            </a>
+        </div>
+        <div class="group">
+            <p class="input-item">
+                <span class="name">成人</span>
+                <number>1</number>
+            </p>
+            <p class="input-item">
+                <span class="name">儿童</span>
+                <number>0</number>
+            </p>
+            <p class="input-item">
+                <span class="name">老人</span>
+                <number>0</number>
+            </p>
+            <p class="input-item">
+                <span class="name">婴儿</span>
+                <number>0</number>
+            </p>
+        </div>
+    </ion-content>
+    <div class="bar bar-footer">
+        <span>订单金额：<em>&yen;</em><strong>39999</strong></span>
+        <a class="booking-btn">提交订单</a>
+    </div>
+</div>

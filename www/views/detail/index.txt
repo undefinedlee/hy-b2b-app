@@ -1,11 +1,16 @@
 <ion-view id="product-detail" title="产品详情">
+    <ion-nav-buttons side="left">
+        <button class="button" ng-if="!hasBack()" ui-sref="main.home">
+            <i class="icon i-nav-home"></i>
+        </button>
+    </ion-nav-buttons>
     <ion-nav-buttons side="right">
         <button class="button">
             <i class="icon i-share"></i>
         </button>
-        <button class="button">
+        <!--button class="button">
             <i class="icon i-more-menu"></i>
-        </button>
+        </button-->
     </ion-nav-buttons>
     <ion-content class="has-tabs" padding="false" ng-show="info" delegate-handle="main" on-scroll="onScroll($event)">
         <ion-refresher
@@ -92,6 +97,6 @@
             <i class="icon i-tel"></i>
             咨询
         </a>
-        <a class="booking-btn">预定</a>
+        <a class="booking-btn" href="#/booking/{{info.id}}">预定</a>
     </div>
 </ion-view>

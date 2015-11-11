@@ -1,7 +1,7 @@
 require("services:product");
 
 angular.module('controllers.detail', [])
-.controller('DetailController',function($scope, $document, $stateParams, $ionicLoading, $ionicScrollDelegate, Tour) {
+.controller('DetailController',function($scope, $document, $stateParams, $ionicLoading, $ionicScrollDelegate, $ionicHistory, Tour) {
 	var tourId = $stateParams.tourId;
 	$scope.update = function(){
 		$scope.$broadcast('scroll.refreshComplete');
@@ -75,6 +75,11 @@ angular.module('controllers.detail', [])
 			});
 		}
 	};
+
+	$scope.hasBack = function(){
+		return !!$ionicHistory.backTitle();
+	};
+
 	$ionicLoading.show({
 		template: '<ion-spinner icon="ios" class="spinner-light"></ion-spinner>'
 	});

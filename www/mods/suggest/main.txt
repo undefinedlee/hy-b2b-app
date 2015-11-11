@@ -1,0 +1,16 @@
+<div class="modal">
+	<div class="bar bar-header bar-primary">
+		<div class="buttons">
+			<button class="button" ng-click="close()">
+				<i class="icon i-back"></i>
+			</button>
+		</div>
+		<div class="title search-bar" style="left:53px;right:60px;">
+			<i class="icon i-search"></i>
+			<input type="text" placeholder="搜索" />
+		</div>
+		<div class="buttons">
+			<button class="button" ng-click="ok()">确定</button>
+		</div>
+	</div>
+</div>

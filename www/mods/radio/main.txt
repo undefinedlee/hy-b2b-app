@@ -1,0 +1,21 @@
+<div class="modal">
+	<div class="bar bar-header bar-primary">
+		<div class="buttons">
+			<button class="button" ng-click="close()">
+				<i class="icon i-back"></i>
+			</button>
+		</div>
+		<h1 class="title">{{title}}</h1>
+		<div class="buttons">
+			<button class="button" ng-click="clear()">
+				<i class="icon i-delete"></i>
+			</button>
+		</div>
+	</div>
+	<ion-content class="checkbox-panel">
+		<a class="{{checkClass(item.checked)}}" ng-repeat="item in items" ng-click="check(item.value)">
+			<i class="icon i-checked"></i>
+			{{item.name}}
+		</a>
+	</ion-content>
+</div>

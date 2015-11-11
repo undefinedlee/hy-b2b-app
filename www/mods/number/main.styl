@@ -1,0 +1,39 @@
+.mod-number
+	display: inline-block
+	width: 148px
+	height: 46px
+	a
+		float: left
+		width: 44px
+		height: 46px
+		text-align: center
+		color: #5d446f
+		font-size: 30px
+		line-height: 38px
+		&:first-child
+			border: 1px solid #5d446f
+			border-right: none
+			border-radius: 3px 0 0 3px
+		&:last-child
+			border: 1px solid #5d446f
+			border-left: none
+			border-radius: 0 3px 3px 0
+		&.activated
+			background-color: #5d446f
+			color: #fff
+		&.disabled
+			border-color: #ccc
+			color: #ccc
+			background-color: #fff
+	input
+		float: left
+		width: 60px
+		height: 46px
+		padding: 14px 0
+		line-height: 18px
+		text-align: center
+		border: 1px solid #5d446f
+		font-size: 18px
+		border-radius: 0
+		background: none
+		padding: 0
