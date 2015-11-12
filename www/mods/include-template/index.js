@@ -11,7 +11,7 @@ angular.module('mods.include-template', [])
 					element.html(value);
 
 					var templateNodes = element.contents();
-					var template = $compile(templateNodes)(scope);
+					$compile(templateNodes)(scope);
 				});
 			};
 		}

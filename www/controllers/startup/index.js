@@ -11,9 +11,7 @@ require("mods:category-checkbox");
 var views = {
     main: require("views:main/index.txt"),
     home: require("views:home/index.txt"),
-    listMain: require("views:list/index.txt"),
-    listList: require("views:list/list.txt"),
-    listFilter: require("views:list/filter.txt"),
+    list: require("views:list/index.txt"),
     detail: require("views:detail/index.txt"),
     booking: require("views:booking/index.txt"),
     order: require("views:order/index.txt"),
@@ -108,19 +106,9 @@ angular.module('controllers.startup',
         })
         .state('main.list', {
             url: "^/list",
-            template: views.listMain,
-            controllerProvider: ResolveController("ListMainController")
+            template: views.list,
+            controllerProvider: ResolveController("ListController")
         })
-        // .state('main.list.list', {
-        //     url: "^/list/list",
-        //     template: views.listList,
-        //     controllerProvider: ResolveController("ListController")
-        // })
-        // .state('main.list.filter', {
-        //     url: "^/list/filter",
-        //     template: views.listFilter,
-        //     controllerProvider: ResolveController("ListFilterController")
-        // })
         .state('main.order', {
             url: "^/order",
             template: views.order,

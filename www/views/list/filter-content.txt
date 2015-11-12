@@ -1,5 +1,5 @@
 <div class="filter-panel">
-	<p class="filter-type J-tabs">
+	<p class="filter-type J-tabs" ng-init="aaa=1">
 		<a class="current" ng-click="switchTab(0)">条件查找</a>
 		<a ng-click="switchTab(1)">精确查找</a>
 	</p>
