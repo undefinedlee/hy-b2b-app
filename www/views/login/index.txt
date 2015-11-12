@@ -1,18 +1,81 @@
 <ion-view id="login" title="登陆" hide-nav-bar="true">
-    <ion-pane class="login-panel no-header" padding="false">
+    <ion-pane class="login-panel no-header {{loginClass()}}" padding="false">
+        <div class="login-panel-bg"></div>
+        <div class="loading-box">
+            <svg viewBox="0 0 105 105">
+                <circle cx="12.5" cy="12.5" r="12.5">
+                    <animate attributeName="fill-opacity"
+                     begin="0s" dur="1s"
+                     values="1;.2;1" calcMode="linear"
+                     repeatCount="indefinite" />
+                </circle>
+                <circle cx="12.5" cy="52.5" r="12.5" fill-opacity=".5">
+                    <animate attributeName="fill-opacity"
+                     begin="100ms" dur="1s"
+                     values="1;.2;1" calcMode="linear"
+                     repeatCount="indefinite" />
+                </circle>
+                <circle cx="52.5" cy="12.5" r="12.5">
+                    <animate attributeName="fill-opacity"
+                     begin="300ms" dur="1s"
+                     values="1;.2;1" calcMode="linear"
+                     repeatCount="indefinite" />
+                </circle>
+                <circle cx="52.5" cy="52.5" r="12.5">
+                    <animate attributeName="fill-opacity"
+                     begin="600ms" dur="1s"
+                     values="1;.2;1" calcMode="linear"
+                     repeatCount="indefinite" />
+                </circle>
+                <circle cx="92.5" cy="12.5" r="12.5">
+                    <animate attributeName="fill-opacity"
+                     begin="800ms" dur="1s"
+                     values="1;.2;1" calcMode="linear"
+                     repeatCount="indefinite" />
+                </circle>
+                <circle cx="92.5" cy="52.5" r="12.5">
+                    <animate attributeName="fill-opacity"
+                     begin="400ms" dur="1s"
+                     values="1;.2;1" calcMode="linear"
+                     repeatCount="indefinite" />
+                </circle>
+                <circle cx="12.5" cy="92.5" r="12.5">
+                    <animate attributeName="fill-opacity"
+                     begin="700ms" dur="1s"
+                     values="1;.2;1" calcMode="linear"
+                     repeatCount="indefinite" />
+                </circle>
+                <circle cx="52.5" cy="92.5" r="12.5">
+                    <animate attributeName="fill-opacity"
+                     begin="500ms" dur="1s"
+                     values="1;.2;1" calcMode="linear"
+                     repeatCount="indefinite" />
+                </circle>
+                <circle cx="92.5" cy="92.5" r="12.5">
+                    <animate attributeName="fill-opacity"
+                     begin="200ms" dur="1s"
+                     values="1;.2;1" calcMode="linear"
+                     repeatCount="indefinite" />
+                </circle>
+            </svg>
+        </div>
         <div class="login-box">
             <p class="logo-bar">
                 <i class="logo"></i>
             </p>
             <p class="input-item">
                 <i class="icon i-login-user name"></i>
-                <input type="text" />
+                <input type="text" ng-model="username" />
             </p>
             <p class="input-item">
                 <i class="icon i-login-password name"></i>
-                <input type="password" />
+                <input type="password" ng-model="password" />
             </p>
-            <a class="submit-btn" href="#/home">登陆</a>
+            <a class="submit-btn" ng-click="login()">
+                <span ng-show="!logining">登陆</span>
+                <ion-spinner ng-show="logining" icon="dots" class="spinner-light" style="vertical-align: -8px;"></ion-spinner>
+            </a>
+            <p class="error-message" ng-show="errorMessage">{{errorMessage}}</p>
             <p class="copy-right">&copy; 2015华远国旅</p>
         </div>
     </ion-pane>

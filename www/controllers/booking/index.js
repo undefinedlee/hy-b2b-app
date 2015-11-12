@@ -4,10 +4,10 @@ require("mods:number");
 require("mods:radio");
 
 angular.module('controllers.booking', ["mods.number", "mods.radio", "Services.User"])
-.controller('BookingController',function($scope, $document, $stateParams, $ionicLoading, $ionicScrollDelegate, $ionicHistory, User) {
+.controller('BookingController',function($scope, $rootScope, $document, $stateParams, $ionicLoading, $ionicScrollDelegate, $ionicHistory, User) {
 	var tourId = $stateParams.tourId;
 
-	User.Sales(1, function(data){
+	User.LinkSalesOrCustomers(function(data){
 		if(data.code === 200){
 			$scope.$apply(function(){
 				$scope.salesSource = data.content;
@@ -15,6 +15,10 @@ angular.module('controllers.booking', ["mods.number", "mods.radio", "Services.Us
 		}
 	});
 
+	$scope.linkUserType = {
+		"sales": "客户",
+		"customer": "销售"
+	}[$rootScope.$state.login.type];
 	$scope.adult = 1;
 	$scope.child = 0;
 	$scope.old = 0;

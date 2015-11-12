@@ -19,9 +19,11 @@ angular.module('mods.checkbox', [])
 		var scope = $scope.$new();
 		
 		scope.items = $scope._source;
-		scope.items.forEach(function(item){
-			item.checked = $scope._value.indexOf(item.value) !== -1;
-		});
+		if($scope._value){
+			scope.items.forEach(function(item){
+				item.checked = $scope._value.indexOf(item.value) !== -1;
+			});
+		}
 		scope.title = $scope._title;
 
 		scope.close = function(){
@@ -90,12 +92,12 @@ angular.module('mods.checkbox', [])
 				
 				scope.$watch("_value", function(){
 					var sourceHash = {};
-					scope._source.forEach(function(item){
+					scope._source && scope._source.forEach(function(item){
 						sourceHash[item.value] = item.name;
 					});
-					scope.value = scope._value.map(function(value){
+					scope.value = scope._value? scope._value.map(function(value){
 						return sourceHash[value];
-					});
+					}) : [];
 				});
 						
 				var lastHasValue = true;
@@ -110,7 +112,7 @@ angular.module('mods.checkbox', [])
 					};
 	
 					scope.$watch("_value", function() {
-						if(scope._value.length){
+						if(scope._value && scope._value.length){
 							if(!lastHasValue){
 								lastHasValue = true;
 								element.empty().removeClass("placeholder");

@@ -6,5 +6,7 @@ momo.version("mods", {
 	"category-checkbox": "v.0",
 	"number": "v.0",
 	"suggest": "v.0",
-	"radio": "v.0"
+	"radio": "v.0",
+	"include-template": "v.0",
+	"store": "v.0"
 });

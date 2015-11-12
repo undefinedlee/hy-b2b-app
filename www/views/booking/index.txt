@@ -7,8 +7,8 @@
     <ion-content class="has-tabs" padding="false">
         <div class="group">
             <a class="input-item input-item-small">
-                <span class="name">销售</span>
-                <radio class="value" placeholder="请选择" ng-model="sales" source="salesSource" title="销售">{{value}}</radio>
+                <span class="name">{{linkUserType}}</span>
+                <radio class="value" placeholder="请选择" ng-model="sales" source="salesSource" title-var="linkUserType">{{value}}</radio>
                 <i class="icon i-back"></i>
             </a>
         </div>

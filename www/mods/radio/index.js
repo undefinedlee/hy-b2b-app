@@ -70,6 +70,7 @@ angular.module('mods.radio', [])
 			var placeholder = attrs["placeholder"];
 			var source = attrs["source"];
 			var title = attrs["title"];
+			var titleVar = attrs["titleVar"];
 			
 			var templateNodes = element.contents();
 			var template = $compile(templateNodes);
@@ -81,6 +82,12 @@ angular.module('mods.radio', [])
 					scope._source = value;
 				});
 				scope._title = title;
+
+				if(titleVar){
+					scope.$parent.$watch(titleVar, function(value){
+						scope._title = value;
+					});
+				}
 				
 				scope.$watch("_value", function(){
 					scope._source && scope._source.some(function(item){

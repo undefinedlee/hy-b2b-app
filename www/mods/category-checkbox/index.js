@@ -31,14 +31,16 @@ angular.module('mods.category-checkbox', [])
 		
 		var itemHash = {},
 			itemCategoryHash = {};
-		scope.categorys.forEach(function(category){
-			category.items.forEach(function(item){
-				itemHash[item.value] = item;
-				item.checked = $scope._value.indexOf(item.value) !== -1;
-				itemCategoryHash[item.value] = category;
+		if($scope._value){
+			scope.categorys.forEach(function(category){
+				category.items.forEach(function(item){
+					itemHash[item.value] = item;
+					item.checked = $scope._value.indexOf(item.value) !== -1;
+					itemCategoryHash[item.value] = category;
+				});
+				checkCategoryCheck(category);
 			});
-			checkCategoryCheck(category);
-		});
+		}
 		
 		function checkCategoryCheck(category){
 			category.hasChecked = category.checked || category.items.some(function(item){
@@ -113,14 +115,14 @@ angular.module('mods.category-checkbox', [])
 				
 				scope.$watch("_value", function(){
 					var sourceHash = {};
-					scope._source.forEach(function(category){
+					scope._source && scope._source.forEach(function(category){
 						category.items.forEach(function(item){
 							sourceHash[item.value] = item.name;
 						});
 					});
-					scope.value = scope._value.map(function(value){
+					scope.value = scope._value ? scope._value.map(function(value){
 						return sourceHash[value];
-					});
+					}) : [];
 				});
 						
 				var lastHasValue = true;
@@ -135,7 +137,7 @@ angular.module('mods.category-checkbox', [])
 					};
 	
 					scope.$watch("_value", function() {
-						if(scope._value.length){
+						if(scope._value && scope._value.length){
 							if(!lastHasValue){
 								lastHasValue = true;
 								element.empty().removeClass("placeholder");

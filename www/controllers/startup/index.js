@@ -11,7 +11,9 @@ require("mods:category-checkbox");
 var views = {
     main: require("views:main/index.txt"),
     home: require("views:home/index.txt"),
-    list: require("views:list/index.txt"),
+    listMain: require("views:list/index.txt"),
+    listList: require("views:list/list.txt"),
+    listFilter: require("views:list/filter.txt"),
     detail: require("views:detail/index.txt"),
     booking: require("views:booking/index.txt"),
     order: require("views:order/index.txt"),
@@ -76,6 +78,23 @@ angular.module('controllers.startup',
     $ionicConfigProvider.transitions.navBar.opacity = $ionicConfigProvider.transitions.navBar.none;
 })
 .config(function ($stateProvider, $urlRouterProvider) {
+    function ResolveController(controllerName){
+        return function($stateParams, $rootScope){
+            var $state = $rootScope.$state;
+
+            return controllerName;
+
+            if($state.login){
+                return controllerName;
+            }else{
+                $state.go("login", {
+                    from: $state.current.name,
+                    params: $stateParams
+                });
+            }
+        }
+    }
+
     $stateProvider
         .state('main', {
             url: "/main",
@@ -85,32 +104,42 @@ angular.module('controllers.startup',
         .state('main.home', {
             url: "^/home",
             template: views.home,
-            controller: "HomeController"
+            controllerProvider: ResolveController("HomeController")
         })
         .state('main.list', {
             url: "^/list",
-            template: views.list,
-            controller: "ListController"
+            template: views.listMain,
+            controllerProvider: ResolveController("ListMainController")
         })
+        // .state('main.list.list', {
+        //     url: "^/list/list",
+        //     template: views.listList,
+        //     controllerProvider: ResolveController("ListController")
+        // })
+        // .state('main.list.filter', {
+        //     url: "^/list/filter",
+        //     template: views.listFilter,
+        //     controllerProvider: ResolveController("ListFilterController")
+        // })
         .state('main.order', {
             url: "^/order",
             template: views.order,
-            controller: "OrderController"
+            controllerProvider: ResolveController("OrderController")
         })
         .state('main.user', {
             url: "^/user",
             template: views.user,
-            controller: "UserController"
+            controllerProvider: ResolveController("UserController")
         })
         .state('detail', {
             url: "^/detail/{tourId}",
             template: views.detail,
-            controller: "DetailController"
+            controllerProvider: ResolveController("DetailController")
         })
         .state('booking', {
             url: "^/booking/{tourId}",
             template: views.booking,
-            controller: "BookingController"
+            controllerProvider: ResolveController("BookingController")
         })
         .state('login', {
             url: "^/login",
@@ -119,4 +148,8 @@ angular.module('controllers.startup',
         });
     
     $urlRouterProvider.otherwise("/home");
+})
+.run(function($rootScope, $state, $stateParams){
+    $rootScope.$state = $state;
+    $state.login = {};
 });
