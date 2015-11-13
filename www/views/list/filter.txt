@@ -1,4 +1,4 @@
 <ion-content class="has-tabs" padding="false">
     <div class="filter-bar-bg"></div>
-    <include-template content="filterContent"></include-template>
+    <include-template content="filterContent" delegate-handle="product-filter-content"></include-template>
 </ion-content>

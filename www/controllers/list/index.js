@@ -13,7 +13,7 @@ var template = {
 var filterStoreKey = "list-filters";
 
 angular.module('controllers.list', ['mods.tool-panel', 'Services.Common', 'Services.Product', "mods.include-template"])
-.controller("ListController", function($scope, $rootScope, $ionicViewSwitcher, $ionicLoading, $document, $timeout, $ionicScrollDelegate, toolPanel, Common, Product, Tour){
+.controller("ListController", function($scope, $rootScope, $ionicViewSwitcher, $ionicLoading, $document, $timeout, $ionicScrollDelegate, $ionicNavBarDelegate, includeTemplateDelegate, toolPanel, Common, Product, Tour){
 	var filters = store.get(filterStoreKey);
 
 	function filterController(scope){
@@ -82,13 +82,42 @@ angular.module('controllers.list', ['mods.tool-panel', 'Services.Common', 'Servi
 		store.set(filterStoreKey, JSON.stringify(filters));
 	}
 
-	if(filters){
-		filters = JSON.parse(filters);
-		$scope.listContent = template.list;
-		$scope.hasFilters = true;
+	function FilterController(){
+		$scope.listContent = template.filter;
+		$scope.hasFilters = false;
+		//$ionicNavBarDelegate.$getByHandle("main").setTitle("产品查询");
 
-		(function(){
-			$scope.hasMore = false;
+		includeTemplateDelegate.ready("product-list-content", function(){
+			var container = angular.element($document[0].getElementById("product-list"));
+			var scope = $scope.$$childTail;
+			scope.filterContent = template.filterContent;
+			filterController(scope);
+
+			includeTemplateDelegate.ready("product-filter-content", function(){
+				$timeout(function(){
+					scope.switchTab = switchTab(container);
+					scope.switchTab(0);
+				});
+
+				scope.ok = function(){
+					ok(scope);
+					//$rootScope.$state.reload(true);
+					ListController();
+				};
+			});
+		});
+	}
+
+	function ListController(){
+		$scope.listContent = template.list;
+		includeTemplateDelegate.reset("product-list-content");
+		$scope.hasFilters = true;
+		//$ionicNavBarDelegate.$getByHandle("main").setTitle("产品列表");
+
+		includeTemplateDelegate.ready("product-list-content", function(){
+			var scope = $scope.$$childTail;
+
+			scope.hasMore = false;
 
 			function search(isRefresh){
 				if(!isRefresh){
@@ -98,7 +127,7 @@ angular.module('controllers.list', ['mods.tool-panel', 'Services.Common', 'Servi
 				}
 				Product.List(angular.copy(filters), function(data){
 					if(isRefresh){
-						$scope.$broadcast('scroll.refreshComplete');
+						scope.$broadcast('scroll.refreshComplete');
 					}else{
 						$ionicLoading.hide();
 					}
@@ -106,34 +135,34 @@ angular.module('controllers.list', ['mods.tool-panel', 'Services.Common', 'Servi
 					if(data.code === 200){
 						data = data.content;
 						console.log(data);
-						$scope.products = data.products;
+						scope.products = data.products;
 						filters.page ++;
 						$ionicScrollDelegate.$getByHandle('list').scrollTo(0, 0);
-						$scope.hasMore = data.page < data.pageCount;
+						scope.hasMore = data.page < data.pageCount;
 					}
 				});
 			}
 			// 搜索方法
 			function load(){
 				Product.List(angular.copy(filters), function(data){
-					$scope.$broadcast('scroll.infiniteScrollComplete');
+					scope.$broadcast('scroll.infiniteScrollComplete');
 					if(data.code === 200){
 						data = data.content;
 						console.log(data);
-						$scope.products = ($scope.products || []).concat(data.products || []);
+						scope.products = (scope.products || []).concat(data.products || []);
 						filters.page ++;
-						$scope.hasMore = data.page < data.pageCount;
+						scope.hasMore = data.page < data.pageCount;
 					}
 				});
 			}
 			
-			$scope.refresh = function(){
+			scope.refresh = function(){
 				search(true);
 			};
-			$scope.load = load;
+			scope.load = load;
 			
-			$scope.loadTours = function(productId){
-				var product = $scope.products.filter(function(product){
+			scope.loadTours = function(productId){
+				var product = scope.products.filter(function(product){
 					return product.id == productId;
 				})[0];
 				product.loading = true;
@@ -144,7 +173,7 @@ angular.module('controllers.list', ['mods.tool-panel', 'Services.Common', 'Servi
 								return _tour.id === tour.id;
 							});
 						});
-						$scope.$apply(function(){
+						scope.$apply(function(){
 							product.tours = product.tours.concat(data);
 							product.hasMore = false;
 						});
@@ -153,14 +182,16 @@ angular.module('controllers.list', ['mods.tool-panel', 'Services.Common', 'Servi
 			};
 	
 			$scope.filterShow = function(){
-				var scope = $scope.$new();
-				angular.extend(scope, filters);
+				var _scope = scope.$new();
+				angular.extend(_scope, filters);
 
-				filterController(scope);
+				filterController(_scope);
+
+				_scope.moreFilter = true;
 				
 				toolPanel.onBeforeShow = function(){
-					scope.switchTab = switchTab(toolPanel.container);
-					scope.switchTab(1);
+					_scope.switchTab = switchTab(toolPanel.container);
+					_scope.switchTab(0);
 				};
 
 				toolPanel.onBeforeHide = function(){
@@ -170,35 +201,25 @@ angular.module('controllers.list', ['mods.tool-panel', 'Services.Common', 'Servi
 				
 				toolPanel.show({
 					template: template.filterContent,
-					scope: scope
+					scope: _scope
 				});
 
-				scope.ok = function(){
-					ok(scope);
+				_scope.ok = function(){
+					ok(_scope);
 					search();
 					toolPanel.hide();
 				};
 			};
 
 			search();
-		})();
+		});
+	}
+
+	if(filters){
+		filters = JSON.parse(filters);
+		ListController();
 	}else{
 		filters = {};
-		$scope.listContent = template.filter;
-		$scope.filterContent = template.filterContent;
-		$scope.hasFilters = false;
-
-		(function(){
-			filterController($scope);
-
-			var container = angular.element($document[0].getElementById("product-list"));
-				
-			$scope.switchTab = switchTab(container);
-
-			$scope.ok = function(){
-				ok($scope.$$childTail);
-				$rootScope.$state.reload();
-			};
-		})();
+		FilterController();
 	}
 });

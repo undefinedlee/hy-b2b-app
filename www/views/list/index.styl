@@ -75,6 +75,7 @@
             font-size: 20px
 .filter-panel
     position: relative
+    background-color: #fff
     .filter-type
         position: absolute
         left: 25px
@@ -119,8 +120,11 @@
         transition: transform 200ms ease
         background-color: #fff
         padding: 15px
+        &:last-child
+            &.tab-panel-hide
+                transform: translate3d(100%, 0, 0)
     .tab-panel-hide
-        transform: translate3d(100%, 0, 0)
+        transform: translate3d(-100%, 0, 0)
     p
         position: relative
         height: 45px
@@ -186,6 +190,7 @@
             transform: translate3d(1px, 1px, 0)
 .filter-panel-animate
     transition: height 200ms ease
+    //transition-delay: 300ms
 .filter-bar-bg
     background: url(map.png) no-repeat
     background-size: 100% auto

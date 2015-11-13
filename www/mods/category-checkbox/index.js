@@ -19,9 +19,6 @@ angular.module('mods.category-checkbox', [])
 		var scope = $scope.$new();
 		
 		scope.categorys = $scope._source;
-		//scope.items.forEach(function(item){
-		//	item.checked = $scope._value.indexOf(item.value) !== -1;
-		//});
 
 		scope.close = function(){
 			scope.modal.hide().then(function(){
@@ -31,16 +28,15 @@ angular.module('mods.category-checkbox', [])
 		
 		var itemHash = {},
 			itemCategoryHash = {};
-		if($scope._value){
-			scope.categorys.forEach(function(category){
-				category.items.forEach(function(item){
-					itemHash[item.value] = item;
-					item.checked = $scope._value.indexOf(item.value) !== -1;
-					itemCategoryHash[item.value] = category;
-				});
-				checkCategoryCheck(category);
+
+		scope.categorys.forEach(function(category){
+			category.items.forEach(function(item){
+				itemHash[item.value] = item;
+				item.checked = $scope._value && $scope._value.indexOf(item.value) !== -1;
+				itemCategoryHash[item.value] = category;
 			});
-		}
+			checkCategoryCheck(category);
+		});
 		
 		function checkCategoryCheck(category){
 			category.hasChecked = category.checked || category.items.some(function(item){

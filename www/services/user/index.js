@@ -11,6 +11,10 @@ angular.module('Services.User', [])
 						type: "customer"
 					}
 				});
+				// callback({
+				// 	code: 200,
+				// 	content: false
+				// });
 			}, 1000);
 		},
 		Login: function(info, callback){

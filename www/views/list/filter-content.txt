@@ -1,5 +1,5 @@
 <div class="filter-panel">
-	<p class="filter-type J-tabs" ng-init="aaa=1">
+	<p class="filter-type J-tabs">
 		<a class="current" ng-click="switchTab(0)">条件查找</a>
 		<a ng-click="switchTab(1)">精确查找</a>
 	</p>
@@ -37,7 +37,7 @@
 			</span>
 			<span class="split"></span>
 		</p>
-		<p>
+		<p ng-hide="!moreFilter">
 			<span class="name">线路玩法</span>
 			<checkbox class="input" ng-model="playList"
 					title="线路玩法"
@@ -46,7 +46,7 @@
 					{{value.join("、")}}
 			</checkbox>
 		</p>
-		<p>
+		<p ng-hide="!moreFilter">
 			<span class="name">产品特色</span>
 			<checkbox class="input" ng-model="featureList"
 					title="产品特色"
@@ -59,7 +59,7 @@
 	</div>
 	<div class="tab-panel J-tab-panel tab-panel-hide">
 		<p>
-			<span class="name">产品名称/团号</span>
+			<span class="name">团名称 / 团号 / 团ID</span>
 			<a class="input" ng-click=""></a>
 		</p>
 		<a class="confirm-btn" ng-click="ok()">确定</a>

@@ -1,9 +1,9 @@
 require("services:user");
 
 angular.module('controllers.login', ["Services.User"])
-.controller('LoginController',function($scope, $rootScope, $stateParams, User) {
-	if(!$stateParams.from || $stateParams.from === "login"){
-		$stateParams.from = "main.home";
+.controller('LoginController',function($scope, $rootScope, $stateParams, $location, User) {
+	if(!$stateParams.from || $stateParams.from === "/login"){
+		$stateParams.from = "/home";
 	}
 
 	$scope.isLogin = true;
@@ -30,10 +30,10 @@ angular.module('controllers.login', ["Services.User"])
 
 			if(result.code === 200){
 	            $rootScope.$state.login = result.content;
-	            $rootScope.$state.go($stateParams.from, $stateParams.params || {});
 	        	$scope.$apply(function(){
 		        	$scope.isLogin = true;
 					$scope.errorMessage = "";
+	            	$location.path($stateParams.from);
 		        });
 			}else{
 	        	$scope.$apply(function(){
@@ -46,7 +46,9 @@ angular.module('controllers.login', ["Services.User"])
     User.CheckLogin(function(result){
         if(result.code === 200 && result.content){
             $rootScope.$state.login = result.content;
-            $rootScope.$state.go($stateParams.from, $stateParams.params);
+            $scope.$apply(function() {
+	            $location.url($stateParams.from);
+	        });
         }else{
         	$scope.$apply(function(){
 	        	$scope.isLogin = false;

@@ -77,21 +77,36 @@ angular.module('controllers.startup',
 })
 .config(function ($stateProvider, $urlRouterProvider) {
     function ResolveController(controllerName){
-        return function($stateParams, $rootScope){
+        return function($stateParams, $rootScope, $location){
             var $state = $rootScope.$state;
-
-            return controllerName;
 
             if($state.login){
                 return controllerName;
             }else{
                 $state.go("login", {
-                    from: $state.current.name,
-                    params: $stateParams
+                    from: $location.$$url
                 });
             }
         }
     }
+
+    // function ResolveLogin(config){
+    //     return {
+    //         url: config.url,
+    //         template: config.template,
+    //         controllerProvider: function($rootScope, $stateParams, $location){
+    //             var $state = $rootScope.$state;
+
+    //             if($state.login){
+    //                 return config.controller;
+    //             }else{
+    //                 $state.go("login", {
+    //                     from: $state.current.name
+    //                 });
+    //             }
+    //         }
+    //     };
+    // }
 
     $stateProvider
         .state('main', {
@@ -130,7 +145,7 @@ angular.module('controllers.startup',
             controllerProvider: ResolveController("BookingController")
         })
         .state('login', {
-            url: "^/login",
+            url: "^/login/{from}",
             template: views.login,
             controller: "LoginController"
         });
@@ -139,5 +154,5 @@ angular.module('controllers.startup',
 })
 .run(function($rootScope, $state, $stateParams){
     $rootScope.$state = $state;
-    $state.login = {};
+    $state.login = false;
 });

@@ -3,6 +3,9 @@
         <button class="button" ng-if="!hasBack()" ui-sref="main.home">
             <i class="icon i-nav-home"></i>
         </button>
+        <!--ion-nav-back-button>
+            <i class="icon i-back"></i>产品
+        </ion-nav-back-button-->
     </ion-nav-buttons>
     <ion-nav-buttons side="right">
         <button class="button">
