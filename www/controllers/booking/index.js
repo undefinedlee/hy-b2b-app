@@ -3,8 +3,8 @@ require("services:user");
 require("mods:number");
 require("mods:radio");
 
-angular.module('controllers.booking', ["mods.number", "mods.radio", "Services.User"])
-.controller('BookingController',function($scope, $rootScope, $document, $stateParams, $ionicLoading, $ionicScrollDelegate, $ionicHistory, User) {
+angular.module('controllers.booking', ["mods.number", "mods.radio", "Services.User", "Services.Order"])
+.controller('BookingController',function($scope, $rootScope, $document, $stateParams, $ionicLoading, $ionicScrollDelegate, $ionicHistory, User, TempOrder) {
 	var tourId = $stateParams.tourId;
 
 	User.LinkSalesOrCustomers(function(data){
@@ -26,5 +26,15 @@ angular.module('controllers.booking', ["mods.number", "mods.radio", "Services.Us
 
 	$scope.hasBack = function(){
 		return !!$ionicHistory.backTitle();
+	};
+
+	$scope.next = function(){
+		TempOrder.Create({
+			tourId: tourId,
+			adult: $scope.adult,
+			child: $scope.child,
+			old: $scope.old,
+			baby: $scope.baby
+		});
 	};
 });

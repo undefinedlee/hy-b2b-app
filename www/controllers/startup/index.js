@@ -2,6 +2,7 @@ require("controllers:home");
 require("controllers:list");
 require("controllers:detail");
 require("controllers:booking");
+require("controllers:booking-info");
 require("controllers:order");
 require("controllers:user");
 require("controllers:login");
@@ -14,6 +15,7 @@ var views = {
     list: require("views:list/index.txt"),
     detail: require("views:detail/index.txt"),
     booking: require("views:booking/index.txt"),
+    bookingInfo: require("views:booking-info/index.txt"),
     order: require("views:order/index.txt"),
     user: require("views:user/index.txt"),
     login: require("views:login/index.txt")
@@ -25,6 +27,7 @@ angular.module('controllers.startup',
      'controllers.list',
      'controllers.detail',
      'controllers.booking',
+     'controllers.booking-info',
      'controllers.order',
      'controllers.user',
      'controllers.login',
@@ -90,24 +93,6 @@ angular.module('controllers.startup',
         }
     }
 
-    // function ResolveLogin(config){
-    //     return {
-    //         url: config.url,
-    //         template: config.template,
-    //         controllerProvider: function($rootScope, $stateParams, $location){
-    //             var $state = $rootScope.$state;
-
-    //             if($state.login){
-    //                 return config.controller;
-    //             }else{
-    //                 $state.go("login", {
-    //                     from: $state.current.name
-    //                 });
-    //             }
-    //         }
-    //     };
-    // }
-
     $stateProvider
         .state('main', {
             url: "/main",
@@ -143,6 +128,11 @@ angular.module('controllers.startup',
             url: "^/booking/{tourId}",
             template: views.booking,
             controllerProvider: ResolveController("BookingController")
+        })
+        .state('booking-info', {
+            url: "^/booking-info/{tourId}",
+            template: views.bookingInfo,
+            controllerProvider: ResolveController("BookingInfoController")
         })
         .state('login', {
             url: "^/login/{from}",

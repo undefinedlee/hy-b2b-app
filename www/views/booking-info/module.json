@@ -1,0 +1,10 @@
+{
+	"name": "booking-info",
+	"group": "views",
+	"version": "0.0.0",
+	"module-type": "module",
+	"entries": [
+		"index.txt",
+		"index.styl"
+	]
+}
