@@ -36,5 +36,6 @@ angular.module('controllers.booking', ["mods.number", "mods.radio", "Services.Us
 			old: $scope.old,
 			baby: $scope.baby
 		});
+		$rootScope.$state.go("booking-info");
 	};
 });

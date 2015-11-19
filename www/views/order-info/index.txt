@@ -1,0 +1,55 @@
+<ion-view id="order-info" title="订单详情">
+    <ion-nav-buttons side="left">
+        <button class="button" ng-if="!hasBack()" ui-sref="main.home">
+            <i class="icon i-nav-home"></i>
+        </button>
+    </ion-nav-buttons>
+    <ion-content padding="false" ng-show="info">
+        <ion-refresher
+            pulling-text="下拉刷新..."
+            on-refresh="update()">
+        </ion-refresher>
+        <div class="order-info">
+            <p class="base-info">
+                订单号：<span class="code">{{info.id}}</span>
+                <span class="status">{{info.status}}</span>
+                <span class="price">&yen;<strong>{{info.price}}</strong></span>
+            </p>
+            <span class="time">{{info.time}}</span>
+        </div>
+        <a class="tour-info" href="#/detail/{{info.tour.id}}">
+            <h3>{{info.tour.name}}</h3>
+            <p>
+                <span>{{info.tour.travelDate}}</span>
+            </p>
+            <i class="icon i-back"></i>
+        </a>
+        <a class="contacts">
+            <span>销售</span>
+            {{info.sales.name}}
+            <i class="icon i-back"></i>
+        </a>
+        <a class="contacts">
+            <span>客户</span>
+            {{info.customer.name}}
+            <i class="icon i-back"></i>
+        </a>
+        <div class="users">
+            <h3>出行人<small>（{{info.users.length}}）</small></h3>
+            <ul>
+                <li ng-repeat="user in info.users">
+                    {{user.name}}
+                    <em>{{user.type}}</em>
+                </li>
+            </ul>
+        </div>
+        <p class="actions">
+            <span>
+                <a>修改订单</a>
+            </span>
+            <span>
+                <a>取消订单</a>
+            </span>
+        </p>
+    </ion-content>
+</ion-view>

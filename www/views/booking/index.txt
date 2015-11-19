@@ -41,6 +41,6 @@
         <p class="price-bar">订单金额：<span>&yen;<strong>29999</strong></span></p>
     </ion-content>
     <div class="bar bar-footer">
-        <a class="booking-btn">下一步<em>填写出行人信息</em></a>
+        <a class="booking-btn" ng-click="next()">下一步<em>填写出行人信息</em></a>
     </div>
 </ion-view>

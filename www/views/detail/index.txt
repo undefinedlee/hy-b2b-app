@@ -24,7 +24,7 @@
             <h2>
                 {{info.name}}
                 <span class="zuan">
-                    <i class="icon i-zuan" ng-repeat="temp in info.level"></i>
+                    <i class="icon i-zuan" ng-repeat="temp in info.level track by $index"></i>
                 </span>
             </h2>
             <p class="info">

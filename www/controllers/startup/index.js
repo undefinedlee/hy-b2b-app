@@ -4,6 +4,7 @@ require("controllers:detail");
 require("controllers:booking");
 require("controllers:booking-info");
 require("controllers:order");
+require("controllers:order-info");
 require("controllers:user");
 require("controllers:login");
 require("mods:calendar");
@@ -17,6 +18,7 @@ var views = {
     booking: require("views:booking/index.txt"),
     bookingInfo: require("views:booking-info/index.txt"),
     order: require("views:order/index.txt"),
+    orderInfo: require("views:order-info/index.txt"),
     user: require("views:user/index.txt"),
     login: require("views:login/index.txt")
 };
@@ -29,6 +31,7 @@ angular.module('controllers.startup',
      'controllers.booking',
      'controllers.booking-info',
      'controllers.order',
+     'controllers.order-info',
      'controllers.user',
      'controllers.login',
      "mods.calendar",
@@ -114,6 +117,11 @@ angular.module('controllers.startup',
             template: views.order,
             controllerProvider: ResolveController("OrderController")
         })
+        .state('order-info', {
+            url: "^/order-info/{orderId}",
+            template: views.orderInfo,
+            controllerProvider: ResolveController("OrderInfoController")
+        })
         .state('main.user', {
             url: "^/user",
             template: views.user,
@@ -130,7 +138,7 @@ angular.module('controllers.startup',
             controllerProvider: ResolveController("BookingController")
         })
         .state('booking-info', {
-            url: "^/booking-info/{tourId}",
+            url: "^/booking-info",
             template: views.bookingInfo,
             controllerProvider: ResolveController("BookingInfoController")
         })

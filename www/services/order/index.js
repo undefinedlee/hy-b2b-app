@@ -3,11 +3,58 @@ var store = require("mods:store");
 angular.module('Services.Order', [])
 .factory("Order", function(){
 	return {
+		Create: function(tempOrder, callback){
+			setTimeout(function(){
+				callback({
+					code: 200,
+					content: {
+						orderId: 1
+					}
+				});
+			}, 1000);
+		},
 		List: function(filters){},
-		Info: function(orderId){},
+		Info: function(orderId, callback){
+			setTimeout(function(){
+				callback({
+					code: 200,
+					content: {
+						id: 157296,
+						price: 29999,
+						status: "待支付",
+						time: "2015-11-11 11:11:11",
+						tour: {
+							id: 1,
+							code: "ETI-BJPYZMU-151124-02",
+							name: "巴厘岛6日4晚•尊享双岛",
+							travelDate: "2015-12-10"
+						},
+						sales: {
+							name: "张三",
+							tel: "13666666666"
+						},
+						customer: {
+							name: "李四",
+							tel: "13888888888"
+						},
+						users: [{
+							name: "王五",
+							type: "成人"
+						}, {
+							name: "赵六",
+							type: "成人"
+						}, {
+							name: "聂七",
+							type: "儿童	"
+						}]
+					}
+				})
+			}, 1000);
+		},
+		// 清位订单
 		ClearList: function(){},
-		AllClearList: function(){},
-		Booking: function(infos){}
+		// 全部清位订单
+		AllClearList: function(){}
 	};
 })
 // 临时订单

@@ -86,9 +86,7 @@ angular.module('controllers.detail', [])
 	Tour.Info(tourId, function(data){
 		if(data.code === 200){
 			data = data.content;
-			data.level = new Array(data.level + 1).join(".").split("").map(function(item, index){
-				return index;
-			});
+			data.level = new Array(data.level);
 			data.summary.recommends = data.summary.recommends.split("\n");
 			$scope.$apply(function(){
 				$scope.info = data;

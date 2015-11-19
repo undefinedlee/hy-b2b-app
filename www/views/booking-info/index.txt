@@ -6,34 +6,25 @@
     </ion-nav-buttons>
     <ion-content class="has-tabs" padding="false">
         <div class="group">
-            <p class="input-item">
+            <p class="input-item" ng-repeat="_adult in adult track by $index">
                 <span class="name">成人</span>
-                <span class="value">
-                    <number ng-model="adult"></number>
-                </span>
+                <input class="value" type="text" ng-model="_adult" />
             </p>
-            <p class="input-item">
+            <p class="input-item" ng-repeat="_child in child track by $index">
                 <span class="name">儿童</span>
-                <span class="value">
-                    <number ng-model="child"></number>
-                </span>
+                <input class="value" type="text" ng-model="_child" />
             </p>
-            <p class="input-item">
+            <p class="input-item" ng-repeat="_old in old track by $index">
                 <span class="name">老人</span>
-                <span class="value">
-                    <number ng-model="old"></number>
-                </span>
+                <input class="value" type="text" ng-model="_old" />
             </p>
-            <p class="input-item">
+            <p class="input-item" ng-repeat="_baby in baby track by $index">
                 <span class="name">婴儿</span>
-                <span class="value">
-                    <number ng-model="baby"></number>
-                </span>
+                <input class="value" type="text" ng-model="_baby" />
             </p>
         </div>
-        <p class="price-bar">订单金额：<span>&yen;<strong>29999</strong></span></p>
     </ion-content>
     <div class="bar bar-footer">
-        <a class="booking-btn">下一步<em>填写出行人信息</em></a>
+        <a class="booking-btn">提交</a>
     </div>
 </ion-view>
