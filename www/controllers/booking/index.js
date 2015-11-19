@@ -31,6 +31,7 @@ angular.module('controllers.booking', ["mods.number", "mods.radio", "Services.Us
 	$scope.next = function(){
 		TempOrder.Create({
 			tourId: tourId,
+			sales: $scope.sales,
 			adult: $scope.adult,
 			child: $scope.child,
 			old: $scope.old,

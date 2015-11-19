@@ -14,7 +14,7 @@
         </div>
         <div class="group">
             <p class="input-item">
-                <span class="name">成人</span>
+                <span class="name">成人{{adult}}</span>
                 <span class="value">
                     <number ng-model="adult"></number>
                 </span>
