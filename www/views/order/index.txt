@@ -1,5 +1,22 @@
-<ion-view title="订单列表" hide-back-button="true">
-    <ion-content class="has-tabs" padding="true">
-    <p>订单列表<p>
-    </ion-content>
-</ion-view>
+<ion-content id="order-list" class="has-tabs" padding="false" title="订单列表" delegate-handle="list">
+    <ion-refresher
+        pulling-text="下拉刷新..."
+        on-refresh="refresh()">
+    </ion-refresher>
+    <ion-list>
+        <ion-item class="product-item" ng-repeat="product in products">
+            <h2 class="title">{{product.name}}</h2>
+            <a class="tour" ng-repeat="tour in product.tours" href="#/detail/{{tour.id}}">
+                <span class="date">{{tour.date}}</span>
+                <span class="storage">余位：<strong>{{tour.num}}</strong></span>
+                <span class="price">&yen;<strong>{{tour.price}}</strong></span>
+                <i class="icon i-back"></i>
+            </a>
+            <p ng-if="product.hasMore&&product.loading" style="text-align:center;padding-top:10px;">
+                <ion-spinner icon="dots"></ion-spinner>
+            </p>
+            <a class="more" ng-if="product.hasMore&&!product.loading" ng-click="loadTours(product.id)">...</a>
+        </ion-item>
+    </ion-list>
+    <ion-infinite-scroll on-infinite="load()" distance="1%" spinner="dots" ng-if="hasMore" immediate-check="false"></ion-infinite-scroll>
+</ion-content>

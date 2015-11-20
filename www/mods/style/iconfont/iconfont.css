@@ -23,6 +23,7 @@
 .i-search:before { content: "\e613"; }
 .i-home:before { content: "\e603"; }
 .i-close:before { content: "\e60c"; }
+.i-cancel:before { content: "\e61a"; }
 .i-delete:before { content: "\e605"; }
 .i-share:before { content: "\e602"; }
 .i-back:before { content: "\e606"; }
@@ -40,4 +41,6 @@
 .i-order:before { content: "\e60e"; }
 .i-tel:before { content: "\e610"; }
 .i-meal:before { content: "\e611"; }
+.i-user-info:before { content: "\e61c"; }
+.i-edit:before { content: "\e61b"; }
 .i-favorite:before { content: "\e612"; }

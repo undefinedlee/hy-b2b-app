@@ -1,4 +1,4 @@
-<ion-view id="product-booking-info" title="产品预定">
+<ion-view id="product-booking-info" title="填写出行人信息">
     <ion-nav-buttons side="left">
         <button class="button" ng-if="!hasBack()" ui-sref="main.home">
             <i class="icon i-nav-home"></i>
@@ -8,23 +8,23 @@
         <div class="group">
             <p class="input-item" ng-repeat="_adult in adult track by $index">
                 <span class="name">成人</span>
-                <input class="value" type="text" ng-model="_adult" />
+                <input class="value" type="text" ng-model="adult[$index]" value="{{_adult}}" placeholder="请填写姓名" />
             </p>
             <p class="input-item" ng-repeat="_child in child track by $index">
                 <span class="name">儿童</span>
-                <input class="value" type="text" ng-model="_child" />
+                <input class="value" type="text" ng-model="child[$index]" value="{{_child}}" placeholder="请填写姓名" />
             </p>
             <p class="input-item" ng-repeat="_old in old track by $index">
                 <span class="name">老人</span>
-                <input class="value" type="text" ng-model="_old" />
+                <input class="value" type="text" ng-model="old[$index]" value="{{_old}}" placeholder="请填写姓名" />
             </p>
             <p class="input-item" ng-repeat="_baby in baby track by $index">
                 <span class="name">婴儿</span>
-                <input class="value" type="text" ng-model="_baby" />
+                <input class="value" type="text" ng-model="baby[$index]" value="{{_baby}}" placeholder="请填写姓名" />
             </p>
         </div>
     </ion-content>
     <div class="bar bar-footer">
-        <a class="booking-btn">提交</a>
+        <a class="booking-btn" ng-click="booking()">提交</a>
     </div>
 </ion-view>

@@ -1,7 +1,7 @@
 require("services:order");
 
 function numToArray(num){
-	return new Array(num || 2);
+	return new Array(num || 0);
 };
 
 angular.module('controllers.booking-info', ["Services.Order"])
@@ -34,13 +34,14 @@ angular.module('controllers.booking-info', ["Services.Order"])
 			if(result.code === 200){
 				TempOrder.Clear();
 				$ionicLoading.show({
-					template: '<i class="icon i-checked" style="font-size:50px;color:#fff;"></i>'
+					template: '<i class="icon i-checked" style="font-size:30px;color:#fff;"></i>'
 				});
 				setTimeout(function(){
+					$ionicLoading.hide();
 	        		$rootScope.$state.go("order-info", {
 	        			orderId: result.orderId
 	        		});
-	        	});
+	        	}, 500);
 			}
 		});
 	};

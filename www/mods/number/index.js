@@ -6,13 +6,15 @@ angular.module('mods.number', [])
 	return {
 		restrict: "E",
 		require: '?ngModel',
-		scope: true,
+		scope: {
+			value: '='
+		},
 		compile: function compile(element, attrs, linkFn) {
 			var max = attrs["max"] || Infinity;
 			var min = attrs["min"] || 0;
 
 			element.addClass("mod-number").html(template);
-
+			
 			return function(scope, element, attrs, controller){
 				if(controller){
 					controller.$render = function() {
@@ -36,6 +38,8 @@ angular.module('mods.number', [])
 				scope.upClass = function(){
 					return scope.value === max ? "disabled" : "";
 				};
+
+				$compile(element.contents())(scope);
 			};
 		}
 	};

@@ -12,11 +12,19 @@
         <div class="order-info">
             <p class="base-info">
                 订单号：<span class="code">{{info.id}}</span>
-                <span class="status">{{info.status}}</span>
                 <span class="price">&yen;<strong>{{info.price}}</strong></span>
             </p>
+            <span class="status">{{info.status}}</span>
             <span class="time">{{info.time}}</span>
         </div>
+        <p class="actions">
+            <span>
+                <a><i class="icon i-edit"></i>修改订单</a>
+            </span>
+            <span>
+                <a><i class="icon i-cancel"></i>取消订单</a>
+            </span>
+        </p>
         <a class="tour-info" href="#/detail/{{info.tour.id}}">
             <h3>{{info.tour.name}}</h3>
             <p>
@@ -24,18 +32,28 @@
             </p>
             <i class="icon i-back"></i>
         </a>
-        <a class="contacts">
-            <span>销售</span>
-            {{info.sales.name}}
-            <i class="icon i-back"></i>
-        </a>
-        <a class="contacts">
-            <span>客户</span>
-            {{info.customer.name}}
-            <i class="icon i-back"></i>
-        </a>
+        <p class="contacts">
+            <span>
+                <span>销售</span>
+                {{info.sales.name}}
+                <i class="icon i-back"></i>
+            </span>
+            <span>
+                <a><i class="icon i-tel"></i></a>
+            </span>
+        </p>
+        <p class="contacts">
+            <span>
+                <span>客户</span>
+                {{info.customer.name}}
+                <i class="icon i-back"></i>
+            </span>
+            <span>
+                <a><i class="icon i-tel"></i></a>
+            </span>
+        </p>
         <div class="users">
-            <h3>出行人<small>（{{info.users.length}}）</small></h3>
+            <h3><i class="icon i-user-info"></i>出行人<small>（{{info.users.length}}）</small></h3>
             <ul>
                 <li ng-repeat="user in info.users">
                     {{user.name}}
@@ -43,13 +61,5 @@
                 </li>
             </ul>
         </div>
-        <p class="actions">
-            <span>
-                <a>修改订单</a>
-            </span>
-            <span>
-                <a>取消订单</a>
-            </span>
-        </p>
     </ion-content>
 </ion-view>
