@@ -7,14 +7,16 @@
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <title>代理商系统</title>
         <link href="lib/ionic/css/ionic.css" rel="stylesheet">
-        <link href="http://192.168.12.138:9999/app/mods/style/v.0/index.css" rel="stylesheet">
-        <link href="http://192.168.12.138:9999/app/views/home/v.0/index.css" rel="stylesheet">
-        <link href="http://192.168.12.138:9999/app/views/list/v.0/index.css" rel="stylesheet">
-        <link href="http://192.168.12.138:9999/app/views/detail/v.0/index.css" rel="stylesheet">
-        <link href="http://192.168.12.138:9999/app/views/booking/v.0/index.css" rel="stylesheet">
-        <link href="http://192.168.12.138:9999/app/views/booking-info/v.0/index.css" rel="stylesheet">
-        <link href="http://192.168.12.138:9999/app/views/login/v.0/index.css" rel="stylesheet">
-        <link href="http://192.168.12.138:9999/app/views/order-info/v.0/index.css" rel="stylesheet">
+        <link href="http://192.168.12.27:9999/app/mods/style/v.0/index.css" rel="stylesheet">
+        <link href="http://192.168.12.27:9999/app/views/home/v.0/index.css" rel="stylesheet">
+        <link href="http://192.168.12.27:9999/app/views/list/v.0/index.css" rel="stylesheet">
+        <link href="http://192.168.12.27:9999/app/views/detail/v.0/index.css" rel="stylesheet">
+        <link href="http://192.168.12.27:9999/app/views/booking/v.0/index.css" rel="stylesheet">
+        <link href="http://192.168.12.27:9999/app/views/booking-info/v.0/index.css" rel="stylesheet">
+        <link href="http://192.168.12.27:9999/app/views/login/v.0/index.css" rel="stylesheet">
+        <link href="http://192.168.12.27:9999/app/views/order/v.0/index.css" rel="stylesheet">
+        <link href="http://192.168.12.27:9999/app/views/order-info/v.0/index.css" rel="stylesheet">
+        <link href="http://192.168.12.27:9999/app/views/user/v.0/index.css" rel="stylesheet">
         <script src="lib/ionic/js/ionic.bundle.js"></script>
         <script src="cordova.js"></script>
     </head>
@@ -25,15 +27,15 @@
             </ion-nav-back-button>
         </ion-nav-bar>
         <ion-nav-view animation="slide-left-right"></ion-nav-view>
-        <script src="http://192.168.12.138:9999/app/mods/momo/v.0/index.js"></script>
-        <script src="http://192.168.12.138:9999/app/!!mods/version.js,controllers/version.js,views/version.js,services/version.js"></script>
+        <script src="http://192.168.12.27:9999/app/mods/momo/v.0/index.js"></script>
+        <script src="http://192.168.12.27:9999/app/!!mods/version.js,controllers/version.js,views/version.js,services/version.js"></script>
         <script type="text/javascript">
             // momo.config({
-            //     base: "http://192.168.12.138:9999/app",
+            //     base: "http://192.168.12.27:9999/app",
             //     comboSyntax: ["!!", ","]
             // });
             momo.config({
-                base: "http://192.168.12.138:9999/app"
+                base: "http://192.168.12.27:9999/app"
             });
             momo.use(["controllers/startup/index"], function(){
                 angular.bootstrap(document, ["controllers.startup"]);

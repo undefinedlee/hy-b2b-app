@@ -93,7 +93,7 @@
     </ion-content>
     <div class="bar bar-footer">
         <a class="icon-btn">
-            <i class="icon i-favorite"></i>
+            <i class="icon i-favorite-add"></i>
             收藏
         </a>
         <a class="icon-btn">

@@ -39,7 +39,7 @@
                 <i class="icon i-back"></i>
             </span>
             <span>
-                <a><i class="icon i-tel"></i></a>
+                <a href="tel:{{info.sales.tel}}"><i class="icon i-tel"></i></a>
             </span>
         </p>
         <p class="contacts">
@@ -49,7 +49,7 @@
                 <i class="icon i-back"></i>
             </span>
             <span>
-                <a><i class="icon i-tel"></i></a>
+                <a href="tel:{{info.customer.tel}}"><i class="icon i-tel"></i></a>
             </span>
         </p>
         <div class="users">

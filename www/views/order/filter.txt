@@ -1,0 +1,40 @@
+<div class="filter-panel">
+	<p class="filter-type J-tabs">
+		<a class="current" ng-click="switchTab(0)">条件查找</a>
+		<a ng-click="switchTab(1)">精确查找</a>
+	</p>
+	<div class="tab-panel J-tab-panel">
+		<p>
+			<span class="name">团号</span>
+			<a class="input" ng-click=""></a>
+		</p>
+		<p>
+			<span class="name">订单状态</span>
+			<a class="input" ng-click=""></a>
+		</p>
+		<p>
+			<span class="name">出团日期</span>
+			<span class="half">
+				<calendar class="input" placeholder="选择日期" ng-model="startDateBegin" end="startDateEnd">
+					{{month}}月{{day}}日
+					<em>周{{week | weekName}}</em>
+				</calendar>
+			</span>
+			<span class="half">
+				<calendar class="input" placeholder="选择日期" ng-model="startDateEnd" begin="startDateBegin">
+					{{month}}月{{day}}日
+					<em>周{{week | weekName}}</em>
+				</calendar>
+			</span>
+			<span class="split"></span>
+		</p>
+		<a class="confirm-btn" ng-click="ok()">确定</a>
+	</div>
+	<div class="tab-panel J-tab-panel tab-panel-hide">
+		<p>
+			<span class="name">订单号</span>
+			<a class="input" ng-click=""></a>
+		</p>
+		<a class="confirm-btn" ng-click="ok()">确定</a>
+	</div>
+</div>

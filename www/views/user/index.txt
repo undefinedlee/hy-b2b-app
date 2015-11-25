@@ -1,5 +1,25 @@
-<ion-view title="个人信息" hide-back-button="true">
-    <ion-content class="has-tabs" padding="true">
-    <p>个人信息<p>
+<ion-view id="user-home" title="个人信息" hide-back-button="true">
+    <ion-content class="has-tabs" padding="false">
+    	<div class="bg"></div>
+    	<div class="user-info">
+    		<h2>张三<small>销售</small></h2>
+    	</div>
+    	<div class="user-menu">
+    		<a>
+                <i class="menu-icon icon i-favorite"></i>
+                我的收藏
+                <i class="icon i-back"></i>
+            </a>
+    		<a>
+                <i class="menu-icon icon i-customer"></i>
+                我的客户
+                <i class="icon i-back"></i>
+            </a>
+    		<a>
+                <i class="menu-icon icon i-clear"></i>
+                待清订单
+                <i class="icon i-back"></i>
+            </a>
+    	</div>
     </ion-content>
 </ion-view>

@@ -1,22 +1,29 @@
-<ion-content id="order-list" class="has-tabs" padding="false" title="订单列表" delegate-handle="list">
-    <ion-refresher
-        pulling-text="下拉刷新..."
-        on-refresh="refresh()">
-    </ion-refresher>
-    <ion-list>
-        <ion-item class="product-item" ng-repeat="product in products">
-            <h2 class="title">{{product.name}}</h2>
-            <a class="tour" ng-repeat="tour in product.tours" href="#/detail/{{tour.id}}">
-                <span class="date">{{tour.date}}</span>
-                <span class="storage">余位：<strong>{{tour.num}}</strong></span>
-                <span class="price">&yen;<strong>{{tour.price}}</strong></span>
+<ion-view id="order-list" title="订单" hide-back-button="true">
+    <ion-nav-buttons side="right">
+        <button class="button" ng-click="filterShow()">
+            <i class="icon i-filter"></i>
+        </button>
+    </ion-nav-buttons>
+    <ion-content class="has-tabs" padding="false" title="订单列表" delegate-handle="list">
+        <ion-refresher
+            pulling-text="下拉刷新..."
+            on-refresh="refresh()">
+        </ion-refresher>
+        <div class="order-list">
+        	<a class="order-item" ng-repeat="order in orders" href="#/order-info/{{order.orderId}}">
+        		<p class="tour-name">{{order.tourName}}</p>
+        		<p class="infos">
+        			<span class="info-item">订单号：<strong>{{order.orderId}}</strong></span>
+        			<span class="info-item danger">{{order.status}}</span>
+        		</p>
+        		<p class="infos">
+        			<span class="info-item">人数：<strong>{{order.people}}</strong></span>
+        			<span class="info-item" style="flex:2;">价格：<span class="price">&yen;<strong>{{order.price}}</strong></span></span>
+        			<span class="info-item" style="flex:2;">出团日期：<strong>{{order.travelDate}}</strong></span>
+        		</p>
                 <i class="icon i-back"></i>
-            </a>
-            <p ng-if="product.hasMore&&product.loading" style="text-align:center;padding-top:10px;">
-                <ion-spinner icon="dots"></ion-spinner>
-            </p>
-            <a class="more" ng-if="product.hasMore&&!product.loading" ng-click="loadTours(product.id)">...</a>
-        </ion-item>
-    </ion-list>
-    <ion-infinite-scroll on-infinite="load()" distance="1%" spinner="dots" ng-if="hasMore" immediate-check="false"></ion-infinite-scroll>
-</ion-content>
+        	</a>
+        </div>
+        <ion-infinite-scroll on-infinite="load()" distance="1%" spinner="dots" ng-if="hasMore" immediate-check="false"></ion-infinite-scroll>
+    </ion-content>
+</ion-view>

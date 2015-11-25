@@ -13,7 +13,88 @@ angular.module('Services.Order', [])
 				});
 			}, 1000);
 		},
-		List: function(filters){},
+		List: function(filters, callback){
+			setTimeout(function(){
+				callback({
+					code: 200,
+					content: {
+						page: 1,
+						pageCount: 5,
+						orders: [{
+							orderId: 1234567,
+							tourName: "巴厘岛6日4晚•尊享双岛",
+							travelDate: "12/10",
+							people: 3,
+							price: 29999,
+							status: "待支付"
+						}, {
+							orderId: 1234567,
+							tourName: "巴厘岛6日4晚•尊享双岛",
+							travelDate: "12/10",
+							people: 3,
+							price: 29999,
+							status: "待支付"
+						}, {
+							orderId: 1234567,
+							tourName: "巴厘岛6日4晚•尊享双岛",
+							travelDate: "12/10",
+							people: 3,
+							price: 29999,
+							status: "待支付"
+						}, {
+							orderId: 1234567,
+							tourName: "巴厘岛6日4晚•尊享双岛",
+							travelDate: "12/10",
+							people: 3,
+							price: 29999,
+							status: "待支付"
+						}, {
+							orderId: 1234567,
+							tourName: "巴厘岛6日4晚•尊享双岛",
+							travelDate: "12/10",
+							people: 3,
+							price: 29999,
+							status: "待支付"
+						}, {
+							orderId: 1234567,
+							tourName: "巴厘岛6日4晚•尊享双岛",
+							travelDate: "12/10",
+							people: 3,
+							price: 29999,
+							status: "待支付"
+						}, {
+							orderId: 1234567,
+							tourName: "巴厘岛6日4晚•尊享双岛",
+							travelDate: "12/10",
+							people: 3,
+							price: 29999,
+							status: "待支付"
+						}, {
+							orderId: 1234567,
+							tourName: "巴厘岛6日4晚•尊享双岛",
+							travelDate: "12/10",
+							people: 3,
+							price: 29999,
+							status: "待支付"
+						}, {
+							orderId: 1234567,
+							tourName: "巴厘岛6日4晚•尊享双岛",
+							travelDate: "12/10",
+							people: 3,
+							price: 29999,
+							status: "待支付"
+						}, {
+							orderId: 1234567,
+							tourName: "巴厘岛6日4晚•尊享双岛",
+							travelDate: "12/10",
+							people: 3,
+							price: 29999,
+							status: "待支付"
+						}]
+					}
+				});
+			}, 1000);
+		},
 		Info: function(orderId, callback){
 			setTimeout(function(){
 				callback({
