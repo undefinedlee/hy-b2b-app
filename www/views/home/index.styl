@@ -1,89 +1,81 @@
-.banner
-    min-height: 80px
-    .slider-slide img
-        display: block
-        width: 100%
-    .slider-pager
-        bottom: initial
-        bottom: 70px
-        .slider-pager-page
-            color: #fff
-        .icon
-            font-size: 12px
-.banner-mask
-    position: relative
-    width: 100%
-    height: 60px
-    margin-top: -60px
-    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, rgba(245, 242, 236,0)), color-stop(1, rgba(245, 242, 236,1)))
-.search-bar
-    position: relative
-    margin: -60px 15px 0
-    padding: 10px 20px
-    background-color: rgba(255, 255, 255, 0.8)
-    border-radius: 6px 6px 5px 5px
-    box-shadow: 0 1px 3px rgba(0,0,0,.15)
-    border-bottom: 5px solid #5d446f
-    .search-btn
-        display: block
-        margin: 20px 0 -32px
-        height: 40px
-        line-height: 40px
-        text-align: center
-        font-size: 16px
-        background-color: #5d446f
-        color: #fff
-        border-radius: 3px
-        &.activated
-            background-color: #553E66
-            transform: translate3d(1px, 1px, 0)
-    p
-        position: relative
-        height: 45px
-        padding-top: 10px
-        margin: 10px 0
-    .name
-        position: absolute
-        left: 0
-        top: 0
-        font-size: 12px
-        line-height: 1
-        color: #666
-    .input
-        display: block
-        height: 35px
-        line-height: 40px
-        font-size: 18px
-        background-image: linear-gradient(0deg, #bbb, #bbb 50%, transparent 50%)
-        background-repeat: no-repeat
-        background-position: bottom
-        background-size: 100% 1px
-        overflow: hidden
-        white-space: nowrap
-        text-overflow: ellipsis
-        &.activated
-            transform: translate3d(1px, 1px, 0)
-            background-image: linear-gradient(0deg, #f90, #f90 50%, transparent 50%)
-    .half
-        float: left
-        width: 50%
-        box-sizing: border-box
-        .input em
-          font-size: 12px
-          color: #999
-          white-space: nowrap
-        &:nth-child(even)
-            padding-right: 10px
-        &:nth-child(odd)
-            padding-left: 10px
-            .input
-              text-align: right
-    .split
-        position: absolute
-        width: 20px
-        left: 50%
-        top: 18px
-        margin-left: -10px
-        text-align: center
-        font-size: 24px
-        color: #ccc
+#home
+    .banner
+        min-height: 80px
+        .slider-slide img
+            display: block
+            width: 100%
+        .slider-pager
+            bottom: initial
+            bottom: 20px
+            .slider-pager-page
+                color: #fff
+            .icon
+                font-size: 12px
+    .list-block
+        margin-top: 10px
+        background-color: #fff
+        border-top: 2px solid #666
+        box-shadow: 0 1px 2px rgba(0, 0, 0, .1)
+        h3
+            line-height: 40px
+            padding: 0 15px
+            box-shadow: 0 0.5px 0 #DBD4C4
+            border-bottom: 0.5px solid #DBD4C4
+            font-size: 16px
+            font-weight: normal
+            margin: 0
+            .title-icon
+                margin-right: 5px
+            .i-more
+                float: right
+                color: #999
+        .list-item
+            display: block
+            padding: 5px 15px
+            text-decoration: none
+            box-shadow: 0 0.5px 0 #DBD4C4
+            border-bottom: 0.5px solid #DBD4C4
+            &:last-child
+                box-shadow: none
+                border-bottom: none
+            h4
+                font-size: 14px
+                color: #555
+                font-weight: normal
+                line-height: 30px
+                white-space: nowrap
+                overflow: hidden
+                text-overflow: ellipsis
+                margin: 0
+            p
+                margin: 0
+            .infos
+                display: flex
+                color: #999
+                line-height: 24px
+                .info-item
+                    flex: 1
+                    text-align: center
+                    font-size: 12px
+                    &:first-child
+                        text-align: left
+                    &:last-child
+                        text-align: right
+                    strong
+                        font-weight: normal
+                        font-size: 14px
+                        color: #555
+                .price
+                    color: #f90
+                    font-size: 10px
+                    strong
+                        font-size: 14px
+                        color: #f90
+    .sales-block
+        border-color: #f39800
+        h3
+            color: #f39800
+    .clear-block
+        border-color: #cd3c3c
+        h3
+            color: #cd3c3c

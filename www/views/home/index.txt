@@ -1,4 +1,4 @@
-<ion-view title=" " hide-nav-bar="true" hide-back-button="true">
+<ion-view id="home" title=" " hide-nav-bar="true" hide-back-button="true">
 	<ion-content class="no-header has-tabs" padding="false">
 		<ion-slide-box class="banner">
 			<ion-slide>
@@ -8,39 +8,84 @@
 				<img src="http://img3.3lian.com/2013/c4/92/d/62.jpg" />
 			</ion-slide>
 		</ion-slide-box>
-		<div class="banner-mask"></div>
-		<div class="search-bar">
-			<p>
-				<span class="name">出发城市</span>
-				<a class="input" ng-click="selectStart()">北京、上海</a>
-			</p>
-			<p>
-				<span class="name">目的地</span>
-				<a class="input" ng-click="selectDest()">欧洲</a>
-			</p>
-			<p>
-				<span class="name">出团日期</span>
-				<span class="half">
-					<calendar class="input"
-							placeholder="选择日期"
-							end="StartDateEnd"
-							ng-model="StartDateBegin">
-						{{month}}月{{day}}日
-						<em>周{{week | weekName}}</em>
-					</calendar>
-				</span>
-				<span class="half">
-					<calendar class="input"
-							placeholder="选择日期"
-							begin="StartDateBegin"
-							ng-model="StartDateEnd">
-						{{month}}月{{day}}日
-						<em>周{{week | weekName}}</em>
-					</calendar>
-				</span>
-				<span class="split"></span>
-			</p>
-			<a class="search-btn" ng-click="showDate()">搜索产品</a>
-		</div>
+		<section class="list-block sales-block">
+			<h3>
+				<i class="icon i-sales title-icon"></i>特卖促销
+				<a class="icon i-more"></a>
+			</h3>
+			<div>
+				<a class="list-item">
+					<h4>德国+法国+瑞士+意大利跟团游(4钻)·少女峰+三宫二船一堡+直飞</h4>
+					<p class="infos">
+						<span class="info-item">12/10</span>
+						<span class="info-item">北京出发</span>
+						<span class="info-item price">&yen;<strong>1000</strong></span>
+						<span class="info-item">余位：<strong>6</strong></span>
+					</p>
+				</a>
+				<a class="list-item">
+					<h4>德国+法国+瑞士+意大利跟团游(4钻)·少女峰+三宫二船一堡+直飞</h4>
+					<p class="infos">
+						<span class="info-item">12/10</span>
+						<span class="info-item">北京出发</span>
+						<span class="info-item price">&yen;<strong>1000</strong></span>
+						<span class="info-item">余位：<strong>6</strong></span>
+					</p>
+				</a>
+				<a class="list-item">
+					<h4>德国+法国+瑞士+意大利跟团游(4钻)·少女峰+三宫二船一堡+直飞</h4>
+					<p class="infos">
+						<span class="info-item">12/10</span>
+						<span class="info-item">北京出发</span>
+						<span class="info-item price">&yen;<strong>1000</strong></span>
+						<span class="info-item">余位：<strong>6</strong></span>
+					</p>
+				</a>
+			</div>
+		</section>
+		<section class="list-block clear-block">
+			<h3>
+				<i class="icon i-clear title-icon"></i>待清订单
+				<a class="icon i-more"></a>
+			</h3>
+			<div>
+				<a class="list-item">
+					<h4>德国+法国+瑞士+意大利跟团游(4钻)·少女峰+三宫二船一堡+直飞</h4>
+					<p class="infos">
+						<span class="info-item">订单号：<strong>1234567</strong></span>
+						<span class="info-item">待支付</span>
+					</p>
+					<p class="infos">
+						<span class="info-item">人数：2</span>
+						<span class="info-item">价格：<span class="price">&yen;<strong>3000</strong></span></span>
+						<span class="info-item">出团日期：<strong>12/10</strong></span>
+					</p>
+				</a>
+				<a class="list-item">
+					<h4>德国+法国+瑞士+意大利跟团游(4钻)·少女峰+三宫二船一堡+直飞</h4>
+					<p class="infos">
+						<span class="info-item">订单号：<strong>1234567</strong></span>
+						<span class="info-item">待支付</span>
+					</p>
+					<p class="infos">
+						<span class="info-item">人数：2</span>
+						<span class="info-item">价格：<span class="price">&yen;<strong>3000</strong></span></span>
+						<span class="info-item">出团日期：<strong>12/10</strong></span>
+					</p>
+				</a>
+				<a class="list-item">
+					<h4>德国+法国+瑞士+意大利跟团游(4钻)·少女峰+三宫二船一堡+直飞</h4>
+					<p class="infos">
+						<span class="info-item">订单号：<strong>1234567</strong></span>
+						<span class="info-item">待支付</span>
+					</p>
+					<p class="infos">
+						<span class="info-item">人数：2</span>
+						<span class="info-item">价格：<span class="price">&yen;<strong>3000</strong></span></span>
+						<span class="info-item">出团日期：<strong>12/10</strong></span>
+					</p>
+				</a>
+			</div>
+		</section>
 	</ion-content>
 </ion-view>

@@ -13,7 +13,19 @@ var template = {
 var filterStoreKey = "list-filters";
 
 angular.module('controllers.list', ['mods.tool-panel', 'Services.Common', 'Services.Product', "mods.include-template"])
-.controller("ListController", function($scope, $rootScope, $ionicViewSwitcher, $ionicLoading, $document, $timeout, $ionicScrollDelegate, $ionicNavBarDelegate, includeTemplateDelegate, toolPanel, Common, Product, Tour){
+.controller("ListController", function($scope,
+									$rootScope,
+									$ionicViewSwitcher,
+									$ionicLoading,
+									$document,
+									$timeout,
+									$ionicScrollDelegate,
+									$ionicNavBarDelegate,
+									includeTemplateDelegate,
+									toolPanel,
+									Common,
+									Product,
+									Tour){
 	var filters = store.get(filterStoreKey);
 
 	function filterController(scope){
