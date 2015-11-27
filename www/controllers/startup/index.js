@@ -79,7 +79,21 @@ angular.module('controllers.startup',
 
         return d;
     };
-    $ionicConfigProvider.transitions.navBar.opacity = $ionicConfigProvider.transitions.navBar.none;
+    //$ionicConfigProvider.transitions.navBar.opacity = $ionicConfigProvider.transitions.navBar.none;
+    $ionicConfigProvider.transitions.navBar.opacity = function(enteringHeaderBar, leavingHeaderBar) {
+        return {
+            run: function(step) {
+                leavingHeaderBar.headerBarEle().addClass("hide");
+                setTimeout(function(){
+                    leavingHeaderBar.headerBarEle().removeClass("hide");
+                }, 1000);
+
+                $ionicConfigProvider.transitions.navBar.ios(enteringHeaderBar, leavingHeaderBar, false, false).run(step);
+                $ionicConfigProvider.transitions.navBar.android(enteringHeaderBar, leavingHeaderBar, false, false).run(step);
+            },
+            shouldAnimate: false
+        };
+    };
 })
 .config(function ($stateProvider, $urlRouterProvider) {
     function ResolveController(controllerName){
@@ -150,7 +164,33 @@ angular.module('controllers.startup',
     
     $urlRouterProvider.otherwise("/home");
 })
-.run(function($rootScope, $state, $stateParams){
+.run(function($rootScope, $state, $stateParams, $ionicHistory, $ionicNavBarDelegate){
     $rootScope.$state = $state;
     $state.login = false;
+
+    // $rootScope.hasBack = function(){
+    //     var backView;
+    //     if((backView = $ionicHistory.backView()) && backView.stateName === "login"){
+    //         $ionicHistory.clearHistory();
+    //     }
+
+    //     var hasBack = !!$ionicHistory.backView();
+    //     $ionicNavBarDelegate.showBackButton(hasBack);
+    //     return hasBack;
+    // };
+
+    // $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){
+    //     if(fromState.name === "login"){
+    //         $ionicHistory.clearHistory();
+    //     }
+    // });
+
+    $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
+        var hasBack = fromState.name !== "login";
+        $ionicNavBarDelegate.showBackButton(hasBack);
+        $rootScope.hasBack = hasBack;
+        if(!hasBack){
+            $ionicHistory.clearHistory();
+        }
+    });
 });

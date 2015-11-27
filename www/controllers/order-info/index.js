@@ -1,14 +1,23 @@
 require("services:order");
 
 angular.module('controllers.order-info', ["Services.Order"])
-.controller('OrderInfoController',function($scope, $rootScope, $document, $stateParams, $ionicLoading, $ionicScrollDelegate, $ionicHistory, Order) {
+.controller('OrderInfoController',function($scope, $rootScope, $document, $stateParams, $ionicNavBarDelegate, $ionicLoading, $ionicScrollDelegate, $ionicHistory, Order) {
 	var orderId = $stateParams.orderId;
 	$scope.update = function(){
 		$scope.$broadcast('scroll.refreshComplete');
 	};
 
 	$scope.hasBack = function(){
-		return !!$ionicHistory.backTitle();
+		if(!$rootScope.hasBack()){
+			return false;
+		}
+
+		if($ionicHistory.backView().stateName === "booking-info"){
+			$ionicNavBarDelegate.showBackButton(false);
+			return false;
+		}else{
+			return true;
+		}
 	};
 
 	$ionicLoading.show({

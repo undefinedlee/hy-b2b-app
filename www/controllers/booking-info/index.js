@@ -13,10 +13,6 @@ angular.module('controllers.booking-info', ["Services.Order"])
 	$scope.old = numToArray(tempOrder.old);
 	$scope.baby = numToArray(tempOrder.baby);
 
-	$scope.hasBack = function(){
-		return !!$ionicHistory.backTitle();
-	};
-
 	$scope.booking = function(){
 		TempOrder.Extend({
 			adult: $scope.adult,
@@ -39,7 +35,7 @@ angular.module('controllers.booking-info', ["Services.Order"])
 				setTimeout(function(){
 					$ionicLoading.hide();
 	        		$rootScope.$state.go("order-info", {
-	        			orderId: result.orderId
+	        			orderId: result.content.orderId
 	        		});
 	        	}, 500);
 			}

@@ -5,10 +5,6 @@ require("mods:radio");
 
 angular.module('controllers.booking', ["mods.number", "mods.radio", "Services.User", "Services.Order"])
 .controller('BookingController',function($scope, $rootScope, $document, $stateParams, $ionicLoading, $ionicScrollDelegate, $ionicHistory, User, TempOrder) {
-	$scope.hasBack = function(){
-		return !!$ionicHistory.backTitle();
-	};
-
 	var tourId = $stateParams.tourId;
 
 	// 加载关联销售或客户

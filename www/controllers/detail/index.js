@@ -1,7 +1,7 @@
 require("services:product");
 
 angular.module('controllers.detail', [])
-.controller('DetailController',function($scope, $document, $stateParams, $ionicLoading, $ionicScrollDelegate, $ionicHistory, Tour) {
+.controller('DetailController',function($scope, $rootScope, $document, $stateParams, $ionicLoading, $ionicScrollDelegate, $ionicHistory, Tour) {
 	var tourId = $stateParams.tourId;
 	$scope.update = function(){
 		$scope.$broadcast('scroll.refreshComplete');
@@ -14,20 +14,21 @@ angular.module('controllers.detail', [])
 		return index === $scope.tabIndex;
 	};
 	var mainScroll = $ionicScrollDelegate.$getByHandle('main');
-	var tabHeader = $document[0].getElementById("product-detail").querySelector(".detail-info h3");
+	var pageContainer = angular.element($document[0].getElementById("product-detail"));
+	var tabHeader = pageContainer[0].querySelector(".detail-info h3");
 	var $tabHeader = angular.element(tabHeader);
 	var tabContainer = $tabHeader.parent();
 	var flying = false;
 	var top;
 	$scope.onScroll = function(){
-		if(!top){
+		if(!top && tabHeader.offsetParent){
 			top = tabHeader.offsetParent.offsetTop - 46;
 		}
 		if(mainScroll.getScrollPosition().top > top){
 			if(!flying){
 				flying = true;
 				$tabHeader.addClass("product-detail-tab-fly");
-				$document.find("body").append($tabHeader);
+				pageContainer.append($tabHeader);
 			}
 		}else if(flying){
 			flying = false;
@@ -35,6 +36,15 @@ angular.module('controllers.detail', [])
 			$tabHeader.removeClass("product-detail-tab-fly");
 		}
 	};
+	// 页面离开时停止浮动
+	// $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){
+	// 	if(fromState.name === "detail"){
+	// 		flying = false;
+	// 		tabContainer.append($tabHeader);
+	// 		$tabHeader.removeClass("product-detail-tab-fly");
+	// 	}
+	// });
+
 	var tripInited = false;
 	var extendInfoInited = false;
 	$scope.switchTo = function(index){
@@ -74,10 +84,6 @@ angular.module('controllers.detail', [])
 				}
 			});
 		}
-	};
-
-	$scope.hasBack = function(){
-		return !!$ionicHistory.backTitle();
 	};
 
 	$ionicLoading.show({

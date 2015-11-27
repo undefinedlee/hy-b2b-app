@@ -1,6 +1,6 @@
 <ion-view id="product-booking" title="选择份数">
     <ion-nav-buttons side="left">
-        <button class="button" ng-if="!hasBack()" ui-sref="main.home">
+        <button class="button" ng-if="!hasBack" ui-sref="main.home">
             <i class="icon i-nav-home"></i>
         </button>
     </ion-nav-buttons>
